@@ -6,40 +6,45 @@
     <title>Energienotfall.de - Gasspeicher 32.9% | 30.01.2026</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Energienotfall.de: Alternative Ansicht der aktuellen Gasspeicher-Daten. Füllstand 32.9%, Trend -0.71%/Tag. Vorhersage, Europa-Vergleich und historische Daten. Datenquelle: GIE AGSI.">
-    <meta name="keywords" content="Gasspeicher, Deutschland, Füllstand, Erdgas, Energieversorgung, AGSI, Gasreserven, Energiekrise, Gaspreis, Speicherstand">
-    <meta name="author" content="Privates Projekt">
+    <meta name="description" content="Energienotfall.de: Erhöhte Aufmerksamkeit. Speicherstand unter Beobachtung. Füllstand 32.9%, Trend -0.71%/Tag. Prognose-Tiefpunkt: 7.9%. Privates Projekt · Keine offizielle Behördenseite">
+    <meta name="keywords" content="Gasspeicher, Deutschland, Füllstand, Gaspreis, Energiekrise, Gasversorgung, TTF, Erdgas, Speicherstand">
+    <meta name="author" content="Energienotfall.de">
     <meta name="robots" content="index, follow">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.energienotfall.de/">
-
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.energienotfall.de/">
     <meta property="og:title" content="Energienotfall.de - Gasspeicher 32.9%">
-    <meta property="og:description" content="Alternative Ansicht der aktuellen Gasspeicher-Daten: 32.9% Füllstand, Trend -0.71%/Tag. Mit Vorhersage und Europa-Vergleich.">
+    <meta property="og:description" content="Füllstand 32.9%, Trend -0.71%/Tag. Prognose-Tiefpunkt: 7.9% am 31.03.2026.">
     <meta property="og:locale" content="de_DE">
     <meta property="og:site_name" content="Energienotfall.de">
-    <meta property="og:image" content="https://www.energienotfall.de/Gasspeicher_Vorhersage_2026-02-01.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Energienotfall.de - Gasspeicher 32.9%">
-    <meta name="twitter:description" content="Füllstand 32.9%, Trend -0.71%/Tag. Vorhersage bis 31.03.2026.">
-    <meta name="twitter:image" content="https://www.energienotfall.de/Gasspeicher_Vorhersage_2026-02-01.png">
+    <meta name="twitter:description" content="Gasspeicher 32.9%, Trend -0.71%/Tag. Tiefpunkt 7.9%.">
 
-    <!-- Additional SEO -->
-    <meta name="theme-color" content="#1a5276">
-    <meta name="geo.region" content="DE">
-    <meta name="geo.country" content="Germany">
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Energienotfall.de",
+        "description": "Alternative Ansicht der aktuellen Gasspeicher-Daten für Deutschland",
+        "url": "https://www.energienotfall.de",
+        "inLanguage": "de-DE",
+        "dateModified": "2026-01-30",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Energienotfall.de"
+        }
+    }
+    </script>
 
     <style>
         :root {
             --primary: #1a5276;
-            --danger: #c0392b;
+            --danger: #e74c3c;
             --warning: #f39c12;
             --success: #27ae60;
             --gray: #7f8c8d;
@@ -48,62 +53,86 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
-            padding: 2rem;
+            padding: 1rem;
+            color: #fff;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         .header {
             text-align: center;
             padding: 2rem;
+            margin-bottom: 1.5rem;
         }
         .header h1 {
-            color: var(--primary);
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
-        .header .date {
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
         .header .subtitle {
-            color: #e74c3c;
+            color: #888;
             font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            background: #fdf2f2;
-            border: 1px solid #f5c6cb;
-            border-radius: 4px;
-            display: inline-block;
         }
-        .status {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-        .status.critical { background: var(--danger); color: white; }
-        .status.warning { background: var(--warning); color: white; }
-        .status.ok { background: var(--success); color: white; }
 
+        /* Signal Ampel */
+        .signal-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .signal-light {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 60px currentColor;
+            animation: pulse 2s infinite;
+        }
+        .signal-red { background: radial-gradient(circle, #e74c3c, #c0392b); color: #e74c3c; }
+        .signal-yellow { background: radial-gradient(circle, #f39c12, #d68910); color: #f39c12; }
+        .signal-green { background: radial-gradient(circle, #27ae60, #1e8449); color: #27ae60; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        .signal-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .signal-description {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        /* Grid Layout */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* Metrics */
         .metric {
             text-align: center;
             padding: 1rem;
@@ -111,776 +140,335 @@
         .metric .value {
             font-size: 2.5rem;
             font-weight: bold;
-            color: var(--primary);
         }
         .metric .label {
-            color: var(--gray);
-            margin-top: 0.5rem;
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
         }
         .metric.danger .value { color: var(--danger); }
         .metric.warning .value { color: var(--warning); }
+        .metric.success .value { color: var(--success); }
 
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+        /* Import Flow */
+        .import-flow {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
         }
-
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 0 -0.5rem;
-            padding: 0 0.5rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            min-width: 500px;
-        }
-        th, td {
+        .import-item {
+            background: rgba(255,255,255,0.05);
             padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--light);
-            white-space: nowrap;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        th {
-            background: var(--light);
-            font-weight: 600;
+        .import-item .country {
+            font-size: 0.9rem;
         }
-        tr:hover { background: #f8f9fa; }
-
-        .forecast-table th:nth-child(2),
-        .forecast-table th:nth-child(3),
-        .forecast-table th:nth-child(4),
-        .forecast-table th:nth-child(5),
-        .forecast-table td:nth-child(2),
-        .forecast-table td:nth-child(3),
-        .forecast-table td:nth-child(4),
-        .forecast-table td:nth-child(5) {
-            text-align: right;
+        .import-item .value {
+            font-weight: bold;
+            color: #3498db;
         }
-        .forecast-table td:nth-child(2),
-        .forecast-table td:nth-child(3) {
-            font-family: 'Courier New', monospace;
+        .import-total {
+            grid-column: 1 / -1;
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid #3498db;
         }
 
-        .comparison {
+        /* Weather Scenarios */
+        .scenario-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .scenario-row:last-child {
+            border-bottom: none;
+        }
+        .scenario-label {
+            font-size: 0.9rem;
+        }
+        .scenario-value {
+            font-weight: bold;
+        }
+        .scenario-cold { color: #3498db; }
+        .scenario-normal { color: #f39c12; }
+        .scenario-mild { color: #e74c3c; }
+
+        /* Spark Spread */
+        .spark-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-            background: var(--light);
-            border-radius: 8px;
-            margin-top: 1rem;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-        .comparison .diff {
+        .spark-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        .spark-item .value {
             font-size: 1.5rem;
             font-weight: bold;
         }
-        .comparison .diff.negative { color: var(--danger); }
-        .comparison .diff.positive { color: var(--success); }
+        .spark-item .label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .spark-profitable { color: #27ae60; }
+        .spark-unprofitable { color: #e74c3c; }
 
-        .threshold-card {
+        /* Emergency Scenarios */
+        .emergency-item {
+            background: rgba(231, 76, 60, 0.1);
             border-left: 4px solid;
-            padding-left: 1rem;
-            margin: 1rem 0;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0 8px 8px 0;
         }
-        .threshold-card.critical { border-color: var(--danger); }
-        .threshold-card.warning { border-color: var(--warning); }
-
-        .config-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
+        .emergency-item.severity-critical { border-color: #e74c3c; }
+        .emergency-item.severity-high { border-color: #f39c12; }
+        .emergency-item.severity-medium { border-color: #3498db; }
+        .emergency-item.severity-low { border-color: #27ae60; }
+        .emergency-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
         }
-        .config-item {
+        .emergency-stats {
             display: flex;
-            justify-content: space-between;
-            padding: 0.5rem;
-            background: var(--light);
-            border-radius: 4px;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #aaa;
         }
-        .config-item .key { color: var(--gray); }
-        .config-item .val { font-weight: 600; }
 
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .alert-critical {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+        }
+        .alert-warning {
+            background: rgba(243, 156, 18, 0.2);
+            border: 1px solid #f39c12;
+        }
+        .alert-success {
+            background: rgba(39, 174, 96, 0.2);
+            border: 1px solid #27ae60;
+        }
+        .alert-icon {
+            font-size: 1.5rem;
+        }
+        .alert-content {
+            flex: 1;
+        }
+        .alert-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        .alert-message {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
-            color: white;
-            padding: 1.5rem 1rem;
-            opacity: 0.9;
-            font-size: 0.85rem;
-            line-height: 1.6;
+            padding: 2rem 1rem;
+            color: #666;
+            font-size: 0.8rem;
         }
         .footer a {
-            color: white;
-            text-decoration: underline;
-        }
-        .footer-section {
-            margin: 0.5rem 0;
-        }
-        .footer-legal {
-            font-size: 0.75rem;
-            opacity: 0.8;
-            margin-top: 1rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            color: #888;
         }
 
-        .chart-container {
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .chart-container img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .eu-aggregate {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-        .eu-stat {
-            text-align: center;
-            color: white;
-        }
-        .eu-value {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-        .eu-label {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-        .europe-table {
-            font-size: 0.9rem;
-        }
-        .europe-table th {
-            background: var(--primary);
-            color: white;
-        }
-        .europe-table th:nth-child(3),
-        .europe-table th:nth-child(4),
-        .europe-table th:nth-child(5),
-        .europe-table td:nth-child(3),
-        .europe-table td:nth-child(4),
-        .europe-table td:nth-child(5) {
-            text-align: right;
-        }
-        .europe-table td:nth-child(3),
-        .europe-table td:nth-child(4),
-        .europe-table td:nth-child(5) {
-            font-family: 'Courier New', monospace;
-        }
-
-        /* Responsive: Tablet */
+        /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 0.75rem;
-            }
-            .container {
-                max-width: 100%;
-            }
             .header h1 {
-                font-size: 1.4rem;
-            }
-            .header .subtitle {
-                font-size: 0.8rem;
-            }
-            .header {
-                padding: 1rem;
-            }
-            .card {
-                padding: 1rem;
-                margin-bottom: 1rem;
-                border-radius: 10px;
-            }
-            .metric .value {
-                font-size: 2rem;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .comparison {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-            .config-grid {
-                grid-template-columns: 1fr;
-            }
-            .eu-aggregate {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 1rem;
-            }
-            .eu-value {
-                font-size: 1.4rem;
-            }
-            table {
-                font-size: 0.9rem;
-                min-width: 450px;
-            }
-            th, td {
-                padding: 0.6rem 0.4rem;
-            }
-        }
-
-        /* Responsive: Smartphone */
-        @media (max-width: 480px) {
-            body {
-                padding: 0.4rem;
-            }
-            .header h1 {
-                font-size: 1.2rem;
-                line-height: 1.3;
-            }
-            .header .date {
-                font-size: 0.85rem;
-            }
-            .header .subtitle {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.5rem;
-            }
-            .header {
-                padding: 0.75rem;
-            }
-            .status {
-                font-size: 0.95rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .card {
-                padding: 0.75rem;
-                border-radius: 8px;
-                margin-bottom: 0.75rem;
-            }
-            h2 {
-                font-size: 1rem;
-                margin-bottom: 0.75rem;
-            }
-            .metric {
-                padding: 0.5rem;
-            }
-            .metric .value {
                 font-size: 1.5rem;
             }
-            .metric .label {
-                font-size: 0.8rem;
+            .signal-light {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
             }
-            .eu-aggregate {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.5rem;
-                padding: 0.6rem;
+            .metric .value {
+                font-size: 1.8rem;
             }
-            .eu-value {
-                font-size: 1.1rem;
-            }
-            .eu-label {
-                font-size: 0.7rem;
-            }
-            .table-wrapper {
-                margin: 0 -0.75rem;
-                padding: 0 0.75rem;
-            }
-            table {
-                font-size: 0.8rem;
-                min-width: 400px;
-            }
-            th, td {
-                padding: 0.5rem 0.3rem;
-            }
-            .threshold-card {
-                padding-left: 0.75rem;
-                margin: 0.75rem 0;
-            }
-            .threshold-card h3 {
-                font-size: 0.95rem;
-            }
-            .threshold-card p {
-                font-size: 0.85rem;
-                margin: 0.3rem 0;
-            }
-            .config-item {
-                padding: 0.4rem;
-                font-size: 0.85rem;
-            }
-            .comparison {
-                padding: 0.75rem;
-            }
-            .comparison .diff {
-                font-size: 1.2rem;
-            }
-            .footer {
-                font-size: 0.75rem;
-                padding: 1rem 0.75rem;
-            }
-            .footer-legal {
-                font-size: 0.65rem;
+            .import-flow {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Energienotfall.de - Gasspeicher 32.9%",
-        "description": "🔥 Der aktuelle Gasfüllstand in DE zeigt: ",
-        "datePublished": "2026-02-01",
-        "dateModified": "2026-02-01",
-        "author": {
-            "@type": "Person",
-            "name": "Privates Projekt"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Gasspeicher-Analyse"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage"
-        },
-        "about": {
-            "@type": "Thing",
-            "name": "Deutsche Gasspeicher",
-            "description": "Analyse der Erdgasspeicher in Deutschland"
-        }
-    }
-    </script>
 </head>
 <body>
     <div class="container">
-        <div class="card header">
+        <div class="header">
             <h1>🔥 Der aktuelle Gasfüllstand in DE zeigt: </h1>
-            <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite</div>
-            <div class="date">Bericht erstellt: 01.02.2026 08:53 Uhr</div>
+            <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite | Stand: 30.01.2026</div>
         </div>
 
+        <!-- Signal Ampel -->
+        <div class="signal-container">
+            <div class="signal-light signal-yellow">
+                🟡
+            </div>
+            <div class="signal-message" style="color: #f39c12; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;">
+                Erhöhte Aufmerksamkeit. Speicherstand unter Beobachtung.
+            </div>
+            <div style="font-size: 2.5rem; font-weight: bold;">32.9%</div>
+            <div style="color: #888;">Aktueller Füllstand (82.7 TWh)</div>
+        </div>
+
+        <!-- Alert System -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <h2>🔔 Status-Meldungen</h2>
+            
+            <div class="alert alert-critical">
+                <div class="alert-icon">🔮</div>
+                <div class="alert-content">
+                    <div class="alert-title">Kritische Prognose</div>
+                    <div class="alert-message">Vorhersage-Tiefpunkt bei 7.9% - Notfallmaßnahmen wahrscheinlich</div>
+                </div>
+            </div>
+            
+            <div class="alert alert-warning">
+                <div class="alert-icon">📊</div>
+                <div class="alert-content">
+                    <div class="alert-title">Füllstand unter Beobachtung</div>
+                    <div class="alert-message">Speicher bei 32.9% - unter Winterdurchschnitt</div>
+                </div>
+            </div>
+            
+            <div class="alert alert-warning">
+                <div class="alert-icon">📉</div>
+                <div class="alert-content">
+                    <div class="alert-title">Erhöhter Verbrauch</div>
+                    <div class="alert-message">Täglicher Rückgang: -0.71%/Tag</div>
+                </div>
+            </div>
+            
+            <div class="alert alert-warning">
+                <div class="alert-icon">⏰</div>
+                <div class="alert-content">
+                    <div class="alert-title">Reichweite beachten</div>
+                    <div class="alert-message">46 Tage bei aktuellem Verbrauch</div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Main Grid -->
         <div class="grid">
+            <!-- Key Metrics -->
             <div class="card">
-                <div class="metric warning">
-                    <div class="value">32.9%</div>
-                    <div class="label">Aktueller Füllstand (30.01.2026)</div>
-                </div>
-            </div>
-            <div class="card">
+                <h2>📊 Kennzahlen</h2>
                 <div class="metric danger">
-                    <div class="value">0.0%</div>
-                    <div class="label">Tiefpunkt Hybrid-Vorhersage</div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="metric">
                     <div class="value">-0.71%</div>
-                    <div class="label">Tägliche Änderung (angepasst)</div>
+                    <div class="label">Täglicher Trend</div>
+                </div>
+                <div class="metric">
+                    <div class="value">46</div>
+                    <div class="label">Tage Reichweite (aktuell)</div>
+                    <div style="font-size: 0.75rem; color: #888; margin-top: 0.25rem;">
+                        ❄️ Kälte: 31d | 🌡️ Mild: 66d
+                    </div>
+                </div>
+                <div class="metric danger">
+                    <div class="value">7.9%</div>
+                    <div class="label">Prognose-Tiefpunkt</div>
+                    <div style="font-size: 0.75rem; color: #888; margin-top: 0.25rem;">
+                        31.03.2026
+                    </div>
+                </div>
+            </div>
+
+            <!-- Import Flow -->
+            <div class="card">
+                <h2>📍 Import-Flow (GWh/Tag)</h2>
+                <div class="import-flow">
+                    <div class="import-item">
+                        <span class="country">🇳🇴 Norwegen</span>
+                        <span class="value">1,368</span>
+                    </div>
+                    <div class="import-item">
+                        <span class="country">🇳🇱 Niederlande</span>
+                        <span class="value">673</span>
+                    </div>
+                    <div class="import-item">
+                        <span class="country">🇧🇪 Belgien</span>
+                        <span class="value">656</span>
+                    </div>
+                    <div class="import-item">
+                        <span class="country">🚢 LNG</span>
+                        <span class="value">379</span>
+                    </div>
+                    <div class="import-item import-total">
+                        <span class="country"><strong>Σ Gesamt</strong></span>
+                        <span class="value">3,076</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Scenarios -->
+            <div class="card">
+                <h2>❄️ Wetter-Szenarien (30 Tage)</h2>
+                <div class="scenario-row">
+                    <span class="scenario-label">Kältewelle ❄️</span>
+                    <span class="scenario-value scenario-cold">10.1%</span>
+                </div>
+                <div class="scenario-row">
+                    <span class="scenario-label">Normal 🌤️</span>
+                    <span class="scenario-value scenario-normal">15.6%</span>
+                </div>
+                <div class="scenario-row">
+                    <span class="scenario-label">Milde Witterung 🌡️</span>
+                    <span class="scenario-value scenario-mild">18.8%</span>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: #666;">
+                    Kältewelle: +50% Verbrauch | Mild: -30% Verbrauch
+                </div>
+            </div>
+
+            <!-- Spark Spread -->
+            <div class="card">
+                <h2>⚡ Spark Spread</h2>
+                <div class="spark-container">
+                    <div class="spark-item">
+                        <div class="value">39.3</div>
+                        <div class="label">Gas (EUR/MWh)</div>
+                    </div>
+                    <div class="spark-item">
+                        <div class="value">122.3</div>
+                        <div class="label">Strom (EUR/MWh)</div>
+                    </div>
+                    <div class="spark-item">
+                        <div class="value spark-profitable">+50.9</div>
+                        <div class="label">Spread (EUR/MWh)</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 0.5rem; font-size: 0.85rem; color: #27ae60">
+                    Gaskraftwerke profitabel
+                </div>
+                <div style="text-align: center; margin-top: 0.5rem; font-size: 0.7rem; color: #666;">
+                    Quellen: Gas (TTF) | Strom (EPEX Spot (energy-charts.info))
                 </div>
             </div>
         </div>
 
-        <div class="card">
-            <h2>📉 Vorhersage-Diagramm</h2>
-            <div class="chart-container">
-                <img src="Gasspeicher_Vorhersage_2026-02-01.png" alt="Gasspeicher Vorhersage" />
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>📈 Vorhersage-Ergebnisse (60 Tage)</h2>
-            <div class="table-wrapper">
-                <table class="forecast-table">
-                    <thead>
-                        <tr>
-                            <th>Modell</th>
-                            <th>Endwert</th>
-                            <th>Tiefpunkt</th>
-                            <th>Unter 30% ab</th>
-                            <th>Unter 20% ab</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Linear</strong> (100% Trend)</td>
-                            <td>0.00%</td>
-                            <td>0.00%</td>
-                            <td>05.02.2026</td>
-                            <td>19.02.2026</td>
-                        </tr>
-                        <tr style="background: #e8f6e8;">
-                            <td><strong>Hybrid</strong> (70%/30%) ⭐</td>
-                            <td>0.00%</td>
-                            <td>0.00%</td>
-                            <td>05.02.2026</td>
-                            <td>20.02.2026</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conserv.</strong> (1%/99%)</td>
-                            <td>7.62%</td>
-                            <td>7.62%</td>
-                            <td>06.02.2026</td>
-                            <td>24.02.2026</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>⚡ Speicherleistung (letzte 7 Tage)</h2>
-            <div class="metric danger">
-                <div class="value">📉 -4.53%</div>
-                <div class="label">Füllstandsänderung</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>📊 Vergleich mit historischem Durchschnitt (2012-2022)</h2>
-            <div class="comparison">
-                <div>
-                    <strong>Aktuell:</strong> 32.9%
-                </div>
-                <div>
-                    <strong>Historisch (Jan):</strong> 67.3%
-                </div>
-                <div class="diff negative">
-                    -34.4%
-                </div>
-            </div>
-        </div>
-
-        <!-- Energieflüsse ausgeblendet - fehlt noch: Inlandsverbrauch -->
-
-        
-        <div class="card">
-            <h2>🇪🇺 Gasspeicher Europa - Vergleich</h2>
-            
-        <div class="eu-aggregate" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="eu-stat">
-                <span class="eu-value">41.6%</span>
-                <span class="eu-label">EU Füllstand</span>
-            </div>
-            <div class="eu-stat">
-                <span class="eu-value">476 TWh</span>
-                <span class="eu-label">EU Speicher</span>
-            </div>
-            <div class="eu-stat">
-                <span class="eu-value">1143 TWh</span>
-                <span class="eu-label">EU Kapazität</span>
-            </div>
-        </div>
-            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Rangliste nach Kapazität</h3>
-            <div class="table-wrapper">
-                <table class="europe-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Land</th>
-                            <th>Füll%</th>
-                            <th>Gespeich.</th>
-                            <th>Kapazität</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-        <tr style='background: #e3f2fd; font-weight: bold;'>
-            <td>1</td>
-            <td>🇩🇪 Deutschland</td>
-            <td style="color: #e67e22; font-weight: bold;">32.9%</td>
-            <td>82.7 TWh</td>
-            <td>251.1 TWh</td>
-        </tr>
-        <tr >
-            <td>2</td>
-            <td> Italien</td>
-            <td style="color: #f39c12; font-weight: bold;">57.6%</td>
-            <td>117.1 TWh</td>
-            <td>203.3 TWh</td>
-        </tr>
-        <tr >
-            <td>3</td>
-            <td> Niederlande</td>
-            <td style="color: #e67e22; font-weight: bold;">26.3%</td>
-            <td>37.9 TWh</td>
-            <td>144.3 TWh</td>
-        </tr>
-        <tr >
-            <td>4</td>
-            <td> Frankreich</td>
-            <td style="color: #e67e22; font-weight: bold;">31.2%</td>
-            <td>39.2 TWh</td>
-            <td>125.7 TWh</td>
-        </tr>
-        <tr >
-            <td>5</td>
-            <td> Österreich</td>
-            <td style="color: #f39c12; font-weight: bold;">46.0%</td>
-            <td>46.4 TWh</td>
-            <td>100.8 TWh</td>
-        </tr>
-        <tr >
-            <td>6</td>
-            <td> Ungarn</td>
-            <td style="color: #f39c12; font-weight: bold;">44.6%</td>
-            <td>30.3 TWh</td>
-            <td>68.0 TWh</td>
-        </tr>
-        <tr >
-            <td>7</td>
-            <td> Tschechien</td>
-            <td style="color: #f39c12; font-weight: bold;">47.0%</td>
-            <td>22.1 TWh</td>
-            <td>47.0 TWh</td>
-        </tr>
-        <tr >
-            <td>8</td>
-            <td> Slowakei</td>
-            <td style="color: #f39c12; font-weight: bold;">42.4%</td>
-            <td>15.8 TWh</td>
-            <td>37.2 TWh</td>
-        </tr>
-        <tr >
-            <td>9</td>
-            <td> Polen</td>
-            <td style="color: #2ecc71; font-weight: bold;">65.5%</td>
-            <td>23.8 TWh</td>
-            <td>36.3 TWh</td>
-        </tr>
-        <tr >
-            <td>10</td>
-            <td> Spanien</td>
-            <td style="color: #f39c12; font-weight: bold;">59.4%</td>
-            <td>21.3 TWh</td>
-            <td>35.8 TWh</td>
-        </tr>
-        <tr >
-            <td>11</td>
-            <td> Rumänien</td>
-            <td style="color: #f39c12; font-weight: bold;">51.4%</td>
-            <td>17.4 TWh</td>
-            <td>33.9 TWh</td>
-        </tr>
-        <tr >
-            <td>12</td>
-            <td> Lettland</td>
-            <td style="color: #e67e22; font-weight: bold;">30.2%</td>
-            <td>7.5 TWh</td>
-            <td>24.9 TWh</td>
-        </tr>
-        <tr >
-            <td>13</td>
-            <td> Dänemark</td>
-            <td style="color: #e67e22; font-weight: bold;">35.2%</td>
-            <td>3.4 TWh</td>
-            <td>9.8 TWh</td>
-        </tr>
-        <tr >
-            <td>14</td>
-            <td> Belgien</td>
-            <td style="color: #e67e22; font-weight: bold;">31.8%</td>
-            <td>2.9 TWh</td>
-            <td>9.0 TWh</td>
-        </tr>
-        <tr >
-            <td>15</td>
-            <td> Bulgarien</td>
-            <td style="color: #f39c12; font-weight: bold;">54.8%</td>
-            <td>3.8 TWh</td>
-            <td>7.0 TWh</td>
-        </tr>
-        <tr >
-            <td>16</td>
-            <td> Kroatien</td>
-            <td style="color: #e67e22; font-weight: bold;">21.5%</td>
-            <td>1.0 TWh</td>
-            <td>4.8 TWh</td>
-        </tr>
-        <tr >
-            <td>17</td>
-            <td> Portugal</td>
-            <td style="color: #27ae60; font-weight: bold;">83.2%</td>
-            <td>3.0 TWh</td>
-            <td>3.6 TWh</td>
-        </tr>
-        <tr >
-            <td>18</td>
-            <td> Schweden</td>
-            <td style="color: #2ecc71; font-weight: bold;">71.0%</td>
-            <td>0.1 TWh</td>
-            <td>0.1 TWh</td>
-        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>⚠️ Schwellenwert-Analyse</h2>
-
-            <div class="threshold-card critical">
-                <h3>Hybrid-Modell</h3>
-                <p>Unter 30% ab: <strong>05.02.2026</strong></p>
-                <p>Unter 20% ab: <strong>20.02.2026</strong></p>
-            </div>
-
-            <div class="threshold-card critical">
-                <h3>Conservative-Modell</h3>
-                <p>Unter 30% ab: <strong>06.02.2026</strong></p>
-                <p>Unter 20% ab: <strong>24.02.2026</strong></p>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>🔍 Detaillierte Vorhersage (erste 10 Tage)</h2>
-            <div class="table-wrapper">
-                <table class="forecast-table">
-                    <thead>
-                        <tr>
-                            <th>Tag</th>
-                            <th>Datum</th>
-                            <th>Linear</th>
-                            <th>Hybrid</th>
-                            <th>Conserv.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>31.01.</td>
-                            <td>32.9%</td>
-                            <td>32.9%</td>
-                            <td>32.9%</td>
-                        </tr><tr>
-                            <td>2</td>
-                            <td>01.02.</td>
-                            <td>32.2%</td>
-                            <td>32.3%</td>
-                            <td>32.4%</td>
-                        </tr><tr>
-                            <td>3</td>
-                            <td>02.02.</td>
-                            <td>31.5%</td>
-                            <td>31.6%</td>
-                            <td>31.8%</td>
-                        </tr><tr>
-                            <td>4</td>
-                            <td>03.02.</td>
-                            <td>30.8%</td>
-                            <td>30.9%</td>
-                            <td>31.3%</td>
-                        </tr><tr>
-                            <td>5</td>
-                            <td>04.02.</td>
-                            <td>30.1%</td>
-                            <td>30.3%</td>
-                            <td>30.7%</td>
-                        </tr><tr>
-                            <td>6</td>
-                            <td>05.02.</td>
-                            <td>29.4%</td>
-                            <td>29.6%</td>
-                            <td>30.1%</td>
-                        </tr><tr>
-                            <td>7</td>
-                            <td>06.02.</td>
-                            <td>28.7%</td>
-                            <td>29.0%</td>
-                            <td>29.6%</td>
-                        </tr><tr>
-                            <td>8</td>
-                            <td>07.02.</td>
-                            <td>28.0%</td>
-                            <td>28.3%</td>
-                            <td>29.0%</td>
-                        </tr><tr>
-                            <td>9</td>
-                            <td>08.02.</td>
-                            <td>27.3%</td>
-                            <td>27.6%</td>
-                            <td>28.5%</td>
-                        </tr><tr>
-                            <td>10</td>
-                            <td>09.02.</td>
-                            <td>26.6%</td>
-                            <td>27.0%</td>
-                            <td>27.9%</td>
-                        </tr>
-                        <tr style="font-weight: bold; background: var(--light);">
-                            <td>60</td>
-                            <td>31.03.</td>
-                            <td>0.0%</td>
-                            <td>0.0%</td>
-                            <td>7.6%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>⚙️ Konfiguration</h2>
-            <div class="config-grid">
-                <div class="config-item">
-                    <span class="key">Trend-Anpassung</span>
-                    <span class="val">90%</span>
-                </div>
-                <div class="config-item">
-                    <span class="key">Trend-Fenster</span>
-                    <span class="val">30 Tage</span>
-                </div>
-                <div class="config-item">
-                    <span class="key">Vorhersage-Zeitraum</span>
-                    <span class="val">60 Tage</span>
-                </div>
-                <div class="config-item">
-                    <span class="key">Original-Trend</span>
-                    <span class="val">-0.7880 %/Tag</span>
-                </div>
-                <div class="config-item">
-                    <span class="key">Angepasster Trend</span>
-                    <span class="val">-0.7092 %/Tag</span>
-                </div>
-                <div class="config-item">
-                    <span class="key">Standardabweichung</span>
-                    <span class="val">±0.2522 %/Tag</span>
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="card">
-            <h2>💶 TTF Gaspreis (Europa)</h2>
-            <div class="metric ">
-                <div class="value">💰 39.28 EUR/MWh</div>
-                <div class="label">Dutch TTF Natural Gas</div>
-                <div class="label" style="margin-top: 0.5rem;">📈 +25.4% (30 Tage)</div>
-            </div>
-            
-            <div style="margin-top: 1rem; text-align: center;">
-                <img src="gas_price.png" alt="Gaspreis Trend"
-                     style="max-width: 100%; height: auto;" />
-            </div>
-        
-        </div>
-
+        <!-- Footer -->
         <div class="footer">
-            <div class="footer-section">
-                <strong>Datenquellen:</strong>
-                <a href="https://agsi.gie.eu/" target="_blank" rel="noopener">GIE AGSI</a> (Speicherdaten) |
-                <a href="https://www.bundesnetzagentur.de/" target="_blank" rel="noopener">Bundesnetzagentur</a> (Importdaten) |
-                <a href="https://www.theice.com/products/27996665/Dutch-TTF-Gas-Futures" target="_blank" rel="noopener">ICE</a> (Gaspreis)
-            </div>
-            <div class="footer-legal">
-                <strong>Impressum:</strong> Privates, nicht-kommerzielles Projekt zur Visualisierung öffentlicher Energiedaten. Kontakt: <a href="mailto:hello@energienotfall.de">hello@energienotfall.de</a><br>
-                <strong>Datenschutz:</strong> Diese Seite erhebt keine personenbezogenen Daten. Keine Cookies, kein Tracking, keine Analytics.<br>
-                <strong>Haftungsausschluss:</strong> Alle Angaben ohne Gewähr. Die Vorhersagen dienen nur zur Information und stellen keine Beratung dar.
-            </div>
+            <p>Datenquellen: <a href="https://agsi.gie.eu/">GIE AGSI</a> | <a href="https://www.bundesnetzagentur.de/">Bundesnetzagentur</a></p>
+            <p style="margin-top: 0.5rem;">Privates Projekt · Keine offizielle Behördenseite</p>
         </div>
     </div>
 </body>
