@@ -283,12 +283,24 @@
         /* Footer */
         .footer {
             text-align: center;
-            padding: 2rem 1rem;
-            color: #666;
-            font-size: 0.8rem;
+            padding: 1.5rem 1rem;
+            color: #888;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
         .footer a {
-            color: #888;
+            color: #aaa;
+            text-decoration: underline;
+        }
+        .footer-section {
+            margin: 0.5rem 0;
+        }
+        .footer-legal {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
 
         /* Responsive */
@@ -467,8 +479,17 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>Datenquellen: <a href="https://agsi.gie.eu/">GIE AGSI</a> | <a href="https://www.bundesnetzagentur.de/">Bundesnetzagentur</a></p>
-            <p style="margin-top: 0.5rem;">Privates Projekt · Keine offizielle Behördenseite</p>
+            <div class="footer-section">
+                <strong>Datenquellen:</strong>
+                <a href="https://agsi.gie.eu/" target="_blank" rel="noopener">GIE AGSI</a> (Speicherdaten) |
+                <a href="https://www.bundesnetzagentur.de/" target="_blank" rel="noopener">Bundesnetzagentur</a> (Importdaten) |
+                <a href="https://www.theice.com/products/27996665/Dutch-TTF-Gas-Futures" target="_blank" rel="noopener">ICE</a> (Gaspreis)
+            </div>
+            <div class="footer-legal">
+                <strong>Impressum:</strong> Privates, nicht-kommerzielles Projekt zur Visualisierung öffentlicher Energiedaten. Kontakt: <a href="mailto:hello@energienotfall.de">hello@energienotfall.de</a><br>
+                <strong>Datenschutz:</strong> Diese Seite erhebt keine personenbezogenen Daten. Keine Cookies, kein Tracking, keine Analytics.<br>
+                <strong>Haftungsausschluss:</strong> Alle Angaben ohne Gewähr. Die Vorhersagen dienen nur zur Information und stellen keine Beratung dar.
+            </div>
         </div>
     </div>
 </body>
