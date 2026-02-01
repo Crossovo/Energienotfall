@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energienotfall.de - Gasspeicher 32.9% | 30.01.2026</title>
+    <title>Energienotfall.de - Gasspeicher 32.4% | 31.01.2026</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Energienotfall.de: Erhöhte Aufmerksamkeit. Speicherstand unter Beobachtung. Füllstand 32.9%, Trend -0.71%/Tag. Prognose-Tiefpunkt: 7.9%. Privates Projekt · Keine offizielle Behördenseite">
+    <meta name="description" content="Energienotfall.de: Erhöhte Aufmerksamkeit. Speicherstand unter Beobachtung. Füllstand 32.4%, Trend -0.71%/Tag. Prognose-Tiefpunkt: 7.7%. Privates Projekt · Keine offizielle Behördenseite">
     <meta name="keywords" content="Gasspeicher, Deutschland, Füllstand, Gaspreis, Energiekrise, Gasversorgung, TTF, Erdgas, Speicherstand">
     <meta name="author" content="Energienotfall.de">
     <meta name="robots" content="index, follow">
@@ -14,15 +14,15 @@
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.energienotfall.de/">
-    <meta property="og:title" content="Energienotfall.de - Gasspeicher 32.9%">
-    <meta property="og:description" content="Füllstand 32.9%, Trend -0.71%/Tag. Prognose-Tiefpunkt: 7.9% am 31.03.2026.">
+    <meta property="og:title" content="Energienotfall.de - Gasspeicher 32.4%">
+    <meta property="og:description" content="Füllstand 32.4%, Trend -0.71%/Tag. Prognose-Tiefpunkt: 7.7% am 01.04.2026.">
     <meta property="og:locale" content="de_DE">
     <meta property="og:site_name" content="Energienotfall.de">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Energienotfall.de - Gasspeicher 32.9%">
-    <meta name="twitter:description" content="Gasspeicher 32.9%, Trend -0.71%/Tag. Tiefpunkt 7.9%.">
+    <meta name="twitter:title" content="Energienotfall.de - Gasspeicher 32.4%">
+    <meta name="twitter:description" content="Gasspeicher 32.4%, Trend -0.71%/Tag. Tiefpunkt 7.7%.">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -33,7 +33,7 @@
         "description": "Alternative Ansicht der aktuellen Gasspeicher-Daten für Deutschland",
         "url": "https://www.energienotfall.de",
         "inLanguage": "de-DE",
-        "dateModified": "2026-01-30",
+        "dateModified": "2026-01-31",
         "publisher": {
             "@type": "Organization",
             "name": "Energienotfall.de"
@@ -303,6 +303,101 @@
             border-top: 1px solid rgba(255,255,255,0.2);
         }
 
+        /* Fishbone Diagram */
+        .fishbone-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+        .fishbone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 900px;
+            padding: 1rem 0;
+        }
+        .fishbone-spine {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .fishbone-spine::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #e74c3c);
+            transform: translateY(-50%);
+        }
+        .fishbone-head {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+        .fishbone-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-right: 2rem;
+        }
+        .fishbone-row {
+            display: flex;
+            gap: 1rem;
+        }
+        .fishbone-branch {
+            position: relative;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            min-width: 160px;
+            border-left: 3px solid;
+        }
+        .fishbone-branch.weather { border-color: #3498db; }
+        .fishbone-branch.demand { border-color: #e74c3c; }
+        .fishbone-branch.supply { border-color: #27ae60; }
+        .fishbone-branch.policy { border-color: #9b59b6; }
+        .fishbone-branch.infra { border-color: #f39c12; }
+        .branch-title {
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .branch-items {
+            font-size: 0.75rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+        .branch-impact {
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+        }
+        .impact-value {
+            font-weight: bold;
+        }
+        .impact-value.negative { color: #e74c3c; }
+        .impact-value.positive { color: #27ae60; }
+        .impact-value.variable { color: #f39c12; }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
@@ -326,7 +421,7 @@
     <div class="container">
         <div class="header">
             <h1>🔥 Der aktuelle Gasfüllstand in DE zeigt: </h1>
-            <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite | Stand: 30.01.2026</div>
+            <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite | Stand: 31.01.2026</div>
         </div>
 
         <!-- Signal Ampel -->
@@ -337,8 +432,8 @@
             <div class="signal-message" style="color: #f39c12; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;">
                 Erhöhte Aufmerksamkeit. Speicherstand unter Beobachtung.
             </div>
-            <div style="font-size: 2.5rem; font-weight: bold;">32.9%</div>
-            <div style="color: #888;">Aktueller Füllstand (82.7 TWh)</div>
+            <div style="font-size: 2.5rem; font-weight: bold;">32.4%</div>
+            <div style="color: #888;">Aktueller Füllstand (81.5 TWh)</div>
         </div>
 
         <!-- Alert System -->
@@ -349,7 +444,7 @@
                 <div class="alert-icon">🔮</div>
                 <div class="alert-content">
                     <div class="alert-title">Kritische Prognose</div>
-                    <div class="alert-message">Vorhersage-Tiefpunkt bei 7.9% - Notfallmaßnahmen wahrscheinlich</div>
+                    <div class="alert-message">Vorhersage-Tiefpunkt bei 7.7% - Notfallmaßnahmen wahrscheinlich</div>
                 </div>
             </div>
             
@@ -357,7 +452,7 @@
                 <div class="alert-icon">📊</div>
                 <div class="alert-content">
                     <div class="alert-title">Füllstand unter Beobachtung</div>
-                    <div class="alert-message">Speicher bei 32.9% - unter Winterdurchschnitt</div>
+                    <div class="alert-message">Speicher bei 32.4% - unter Winterdurchschnitt</div>
                 </div>
             </div>
             
@@ -373,7 +468,7 @@
                 <div class="alert-icon">⏰</div>
                 <div class="alert-content">
                     <div class="alert-title">Reichweite beachten</div>
-                    <div class="alert-message">46 Tage bei aktuellem Verbrauch</div>
+                    <div class="alert-message">45 Tage bei aktuellem Verbrauch</div>
                 </div>
             </div>
             
@@ -392,14 +487,14 @@
                     <div class="value">46</div>
                     <div class="label">Tage Reichweite (aktuell)</div>
                     <div style="font-size: 0.75rem; color: #888; margin-top: 0.25rem;">
-                        ❄️ Kälte: 31d | 🌡️ Mild: 66d
+                        ❄️ Kälte: 30d | 🌡️ Mild: 65d
                     </div>
                 </div>
                 <div class="metric danger">
-                    <div class="value">7.9%</div>
+                    <div class="value">7.7%</div>
                     <div class="label">Prognose-Tiefpunkt</div>
                     <div style="font-size: 0.75rem; color: #888; margin-top: 0.25rem;">
-                        31.03.2026
+                        01.04.2026
                     </div>
                 </div>
             </div>
@@ -410,23 +505,23 @@
                 <div class="import-flow">
                     <div class="import-item">
                         <span class="country">🇳🇴 Norwegen</span>
-                        <span class="value">1,368</span>
+                        <span class="value">1,348</span>
                     </div>
                     <div class="import-item">
                         <span class="country">🇳🇱 Niederlande</span>
-                        <span class="value">673</span>
+                        <span class="value">799</span>
                     </div>
                     <div class="import-item">
                         <span class="country">🇧🇪 Belgien</span>
-                        <span class="value">656</span>
+                        <span class="value">617</span>
                     </div>
                     <div class="import-item">
                         <span class="country">🚢 LNG</span>
-                        <span class="value">379</span>
+                        <span class="value">333</span>
                     </div>
                     <div class="import-item import-total">
                         <span class="country"><strong>Σ Gesamt</strong></span>
-                        <span class="value">3,076</span>
+                        <span class="value">3,097</span>
                     </div>
                 </div>
             </div>
@@ -436,15 +531,15 @@
                 <h2>❄️ Wetter-Szenarien (30 Tage)</h2>
                 <div class="scenario-row">
                     <span class="scenario-label">Kältewelle ❄️</span>
-                    <span class="scenario-value scenario-cold">10.1%</span>
+                    <span class="scenario-value scenario-cold">10.0%</span>
                 </div>
                 <div class="scenario-row">
                     <span class="scenario-label">Normal 🌤️</span>
-                    <span class="scenario-value scenario-normal">15.6%</span>
+                    <span class="scenario-value scenario-normal">15.3%</span>
                 </div>
                 <div class="scenario-row">
                     <span class="scenario-label">Milde Witterung 🌡️</span>
-                    <span class="scenario-value scenario-mild">18.8%</span>
+                    <span class="scenario-value scenario-mild">18.7%</span>
                 </div>
                 <div style="margin-top: 1rem; font-size: 0.8rem; color: #666;">
                     Kältewelle: +50% Verbrauch | Mild: -30% Verbrauch
@@ -473,6 +568,82 @@
                 </div>
                 <div style="text-align: center; margin-top: 0.5rem; font-size: 0.7rem; color: #666;">
                     Quellen: Gas (TTF) | Strom (EPEX Spot (energy-charts.info))
+                </div>
+            </div>
+        </div>
+
+        <!-- Fishbone Diagram: Einflussfaktoren -->
+        <div class="fishbone-container">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">🐟 Einflussfaktoren auf den Speicherstand</h2>
+            <div class="fishbone">
+                <div class="fishbone-spine">
+                    <div class="fishbone-categories">
+                        <!-- Obere Reihe -->
+                        <div class="fishbone-row">
+                            <div class="fishbone-branch weather">
+                                <div class="branch-title">🌡️ WETTER</div>
+                                <div class="branch-items">
+                                    • Außentemperatur<br>
+                                    • Frost-Ereignisse<br>
+                                    • Heizgradtage
+                                </div>
+                                <div class="branch-impact">
+                                    Impact: <span class="impact-value variable">±30-50%</span> Verbrauch
+                                </div>
+                            </div>
+                            <div class="fishbone-branch demand">
+                                <div class="branch-title">🏭 VERBRAUCH</div>
+                                <div class="branch-items">
+                                    • Industrie-Produktion<br>
+                                    • Wohnheizung<br>
+                                    • Gaskraftwerke<br>
+                                    • Rechenzentren
+                                </div>
+                                <div class="branch-impact">
+                                    Trend: <span class="impact-value negative">+15-20%</span> YoY
+                                </div>
+                            </div>
+                            <div class="fishbone-branch supply">
+                                <div class="branch-title">🚢 IMPORT</div>
+                                <div class="branch-items">
+                                    • Norwegen Pipeline<br>
+                                    • NL/BE Transit<br>
+                                    • LNG-Terminals
+                                </div>
+                                <div class="branch-impact">
+                                    Risiko: <span class="impact-value negative">-45%</span> wenn NO weg
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Untere Reihe -->
+                        <div class="fishbone-row">
+                            <div class="fishbone-branch policy">
+                                <div class="branch-title">⚖️ POLITIK</div>
+                                <div class="branch-items">
+                                    • Sanktionen (RU-Gas)<br>
+                                    • EU-Preisdeckel<br>
+                                    • Speicher-Vorgaben
+                                </div>
+                                <div class="branch-impact">
+                                    Impact: <span class="impact-value variable">Langfristig</span>
+                                </div>
+                            </div>
+                            <div class="fishbone-branch infra">
+                                <div class="branch-title">🔧 INFRASTRUKTUR</div>
+                                <div class="branch-items">
+                                    • Kapazität: 251 TWh<br>
+                                    • Pipeline-Netz<br>
+                                    • Verdichter
+                                </div>
+                                <div class="branch-impact">
+                                    Limit: <span class="impact-value">Physikalisch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fishbone-head">
+                        SPEICHER<br>STAND
+                    </div>
                 </div>
             </div>
         </div>
