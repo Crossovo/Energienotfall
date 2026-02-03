@@ -398,6 +398,21 @@
         .impact-value.positive { color: #27ae60; }
         .impact-value.variable { color: #f39c12; }
 
+        /* Forecast Chart */
+        .chart-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
@@ -440,35 +455,11 @@
         <div class="card" style="margin-bottom: 1.5rem;">
             <h2>🔔 Status-Meldungen</h2>
             
-            <div class="alert alert-critical">
-                <div class="alert-icon">🔮</div>
-                <div class="alert-content">
-                    <div class="alert-title">Kritische Prognose</div>
-                    <div class="alert-message">Vorhersage-Tiefpunkt bei 7.7% - Notfallmaßnahmen wahrscheinlich</div>
-                </div>
-            </div>
-            
             <div class="alert alert-warning">
-                <div class="alert-icon">📊</div>
+                <div class="alert-icon">⚠️</div>
                 <div class="alert-content">
-                    <div class="alert-title">Füllstand unter Beobachtung</div>
-                    <div class="alert-message">Speicher bei 32.0% - unter Winterdurchschnitt</div>
-                </div>
-            </div>
-            
-            <div class="alert alert-warning">
-                <div class="alert-icon">📉</div>
-                <div class="alert-content">
-                    <div class="alert-title">Erhöhter Verbrauch</div>
-                    <div class="alert-message">Täglicher Rückgang: -0.71%/Tag</div>
-                </div>
-            </div>
-            
-            <div class="alert alert-warning">
-                <div class="alert-icon">⏰</div>
-                <div class="alert-content">
-                    <div class="alert-title">Reichweite beachten</div>
-                    <div class="alert-message">44 Tage bei aktuellem Verbrauch</div>
+                    <div class="alert-title">Erhöhte Aufmerksamkeit</div>
+                    <div class="alert-message">Speicherstand unter Beobachtung. Winter-Entnahme läuft.</div>
                 </div>
             </div>
             
@@ -551,7 +542,7 @@
                 <h2>⚡ Spark Spread</h2>
                 <div class="spark-container">
                     <div class="spark-item">
-                        <div class="value">32.8</div>
+                        <div class="value">32.9</div>
                         <div class="label">Gas (EUR/MWh)</div>
                     </div>
                     <div class="spark-item">
@@ -559,7 +550,7 @@
                         <div class="label">Strom (EUR/MWh)</div>
                     </div>
                     <div class="spark-item">
-                        <div class="value spark-profitable">+50.6</div>
+                        <div class="value spark-profitable">+50.5</div>
                         <div class="label">Spread (EUR/MWh)</div>
                     </div>
                 </div>
@@ -569,6 +560,15 @@
                 <div style="text-align: center; margin-top: 0.5rem; font-size: 0.7rem; color: #666;">
                     Quellen: Gas (TTF) | Strom (EPEX Spot (energy-charts.info))
                 </div>
+            </div>
+        </div>
+
+        <!-- Forecast Chart -->
+        <div class="chart-container">
+            <h2 style="margin-bottom: 1rem;">📈 Vorhersage-Diagramm</h2>
+            <img src="Gasspeicher_Vorhersage_2026-02-03.png" alt="Gasspeicher Vorhersage bis 02.04.2026" />
+            <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #666;">
+                Vorhersage: 60 Tage | Tiefpunkt: 7.7% am 02.04.2026
             </div>
         </div>
 
