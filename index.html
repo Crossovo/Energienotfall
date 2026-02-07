@@ -66,10 +66,20 @@
             text-align: center;
             padding: 2rem;
             margin-bottom: 1.5rem;
+            position: relative;
         }
         .header h1 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
+        }
+        .header-pulse {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
         .header .subtitle {
             color: #888;
@@ -539,6 +549,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <div class="header-pulse" style="background:#f39c12; box-shadow: 0 0 12px #f39c12;"></div>
             <h1>🔥 Der aktuelle Gasfüllstand in DE zeigt: 27.7% (69.6 TWh)</h1>
             <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite | Stand: 06.02.2026</div>
         </div>
@@ -546,6 +557,14 @@
         <!-- Alert System -->
         <div class="card" style="margin-bottom: 1.5rem;">
             <h2>🔔 Status-Meldungen</h2>
+            
+            <div class="alert alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <div class="alert-title">Speicherstand unter 30%</div>
+                    <div class="alert-message">Der Füllstand liegt unter dem saisonalen Durchschnitt. Die Gasversorgung ist durch laufende Importe (Norwegen, NL, BE, LNG) weiterhin gesichert. Die Wiederbefüllung beginnt voraussichtlich im Frühjahr.</div>
+                </div>
+            </div>
             
         </div>
 
