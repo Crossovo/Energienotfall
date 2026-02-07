@@ -76,10 +76,14 @@
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: header-glow 2s ease-in-out infinite;
+        }
+        @keyframes header-glow {
+            0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px currentColor; }
+            50% { transform: scale(1.4); opacity: 0.6; box-shadow: 0 0 20px currentColor; }
         }
         .header .subtitle {
             color: #888;
@@ -549,7 +553,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-pulse" style="background:#f39c12; box-shadow: 0 0 12px #f39c12;"></div>
+            <div class="header-pulse" style="background:#f39c12; color:#f39c12;"></div>
             <h1>🔥 Der aktuelle Gasfüllstand in DE zeigt: 27.7% (69.6 TWh)</h1>
             <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite | Stand: 06.02.2026</div>
         </div>
@@ -680,7 +684,7 @@
         <div class="card" style="grid-column: 1 / -1; margin-top: 1.5rem;">
             <h2>🏢 Deutsche Gasspeicher – Betreiber & Speicher</h2>
             <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">
-                25 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
+                24 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
             </div>
             <div class="facility-matrix">
                 
@@ -748,19 +752,6 @@
                         <div class="tile-capacity">17.1 TWh</div>
                         <div class="tile-bar"><div class="tile-bar-fill" style="width:29%"></div></div>
                         <div class="tile-trend" style="color:#ff6b6b">-1.22%/d</div>
-                    </div>
-                    <div class="facility-tile" style="background: rgba(243, 156, 18, 0.85);">
-                        <div class="tile-tooltip">
-                            <strong>RWE Gas Storage West</strong><br>
-                            Speicher: UGS Epe-L-RWEGSW, UGS STASSFURT-RWEGSWEST, UGS Epe-NL-RWEGSWEST, INNEXPOOL-RWEGSW<br>Füllstand: 33.1% | Trend: -0.52%/Tag<br>
-                            Kapazität: 16.9 TWh | Gespeichert: 5.6 TWh
-                        </div>
-                        <div class="trend-arrow" style="color:#e74c3c">▼</div>
-                        <div class="tile-name">RWE Gas Storage …</div>
-                        <div class="tile-pct">33%</div>
-                        <div class="tile-capacity">16.9 TWh</div>
-                        <div class="tile-bar"><div class="tile-bar-fill" style="width:33%"></div></div>
-                        <div class="tile-trend" style="color:#ff6b6b">-0.52%/d</div>
                     </div>
                     <div class="facility-tile" style="background: rgba(241, 196, 15, 0.75);">
                         <div class="tile-tooltip">
