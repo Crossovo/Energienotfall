@@ -7,7 +7,7 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Energienotfall.de: Energie braucht einen Plan B. Gasspeicher 27.3%, 5 Energieträger im Risikoprofil, Diversifikations-Effekt berechnet. Wer nur auf eine Quelle setzt, riskiert Versorgung und Geldbeutel.">
-    <meta name="keywords" content="Energie Plan B, Versorgungssicherheit, Energieresilienz, Gasspeicher Deutschland, Energieträger Vergleich, Diversifikation, Heizung Ausfall, Gasversorgung, Risikoprofil, Pellets, Holz, Wärmepumpe">
+    <meta name="keywords" content="Energie Plan B, Versorgungssicherheit, Energieresilienz, Gasspeicher Deutschland, Energieträger Vergleich, Diversifikation, Heizung Ausfall, Gasversorgung, Risikoprofil, Pellets, Holz, Strom, Wärmepumpe">
     <meta name="author" content="Energienotfall.de">
     <meta name="robots" content="index, follow">
 
@@ -51,6 +51,7 @@
             --light: #ecf0f1;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -89,6 +90,23 @@
             color: #888;
             font-size: 0.9rem;
         }
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+        }
 
         /* Section Headers */
         .section {
@@ -114,43 +132,11 @@
             font-weight: bold;
         }
 
-        /* Signal Ampel */
-        .signal-container {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .signal-light {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 0 60px currentColor;
-            animation: pulse 2s infinite;
-        }
-        .signal-red { background: radial-gradient(circle, #e74c3c, #c0392b); color: #e74c3c; }
-        .signal-yellow { background: radial-gradient(circle, #f39c12, #d68910); color: #f39c12; }
-        .signal-green { background: radial-gradient(circle, #27ae60, #1e8449); color: #27ae60; }
+        /* Signal Pulse (für Gauge-Bereich) */
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.02); opacity: 0.9; }
         }
-        .signal-label {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .signal-description {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-
         /* Grid Layout */
         .grid {
             display: grid;
@@ -425,29 +411,6 @@
             .diversification-compare {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Emergency Scenarios */
-        .emergency-item {
-            background: rgba(231, 76, 60, 0.1);
-            border-left: 4px solid;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            border-radius: 0 8px 8px 0;
-        }
-        .emergency-item.severity-critical { border-color: #e74c3c; }
-        .emergency-item.severity-high { border-color: #f39c12; }
-        .emergency-item.severity-medium { border-color: #3498db; }
-        .emergency-item.severity-low { border-color: #27ae60; }
-        .emergency-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .emergency-stats {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-            color: #aaa;
         }
 
         /* Alerts */
@@ -751,7 +714,7 @@
         <div class="header">
             <div class="header-pulse" style="background:#f39c12; color:#f39c12;"></div>
             <h1>Energie braucht einen Plan B</h1>
-            <div class="subtitle">Wer nur auf eine Quelle setzt, riskiert Versorgung und Geldbeutel | Stand: 07.02.2026</div>
+            <a href="#plan-b" class="cta-button">Wer nur auf eine Quelle setzt, riskiert Versorgung und Geldbeutel – Jetzt prüfen ↓</a>
         </div>
 
         <!-- ============ GASSPEICHER ============ -->
@@ -761,6 +724,7 @@
                 <span class="section-badge" style="background:#f39c12; color:#fff;">27.3% &middot; 68.7 TWh</span>
             </div>
             <div style="margin: -0.75rem 0 1rem 0; font-size: 0.85rem; color: #aaa; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <span>Stand: 07.02.2026</span>
                 <span>Importe aktiv ✓</span>
                 <span>Reichweite 42 Tage</span>
                 <span>Trend -0.66%/Tag</span>
@@ -845,6 +809,9 @@
                     <div style="font-size: 0.75rem; color: #888; margin-top: 0.25rem;">
                         08.04.2026
                     </div>
+                    <div style="font-size: 0.7rem; color: #e74c3c; margin-top: 0.25rem;">
+                        Unter 10%: Gasrationierung möglich – Industrie zuerst betroffen
+                    </div>
                 </div>
                 <div style="margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.75rem; color: #aaa; line-height: 1.5;">
                     📋 <strong>Historischer Vergleich:</strong> Ø February: <strong style="color:#4fc3f7;">49%</strong> (2012–2022). Aktuell: 27.3% (-22% vs. Mittel). Abweichung vom Durchschnitt – Importe und Wetter entscheidend.
@@ -899,12 +866,12 @@
                 </div>
             </div>
 
-            <!-- Spark Spread -->
+            <!-- Strom vs. Gas -->
             <div class="card">
-                <h2>⚡ Spark Spread</h2>
+                <h2>⚡ Strom vs. Gas</h2>
                 <div class="spark-container">
                     <div class="spark-item">
-                        <div class="value">35.7</div>
+                        <div class="value">40.0</div>
                         <div class="label">Gas (EUR/MWh)</div>
                     </div>
                     <div class="spark-item">
@@ -912,7 +879,7 @@
                         <div class="label">Strom (EUR/MWh)</div>
                     </div>
                     <div class="spark-item">
-                        <div class="value spark-profitable">+49.1</div>
+                        <div class="value spark-profitable">+41.3</div>
                         <div class="label">Spread (EUR/MWh)</div>
                     </div>
                 </div>
@@ -933,8 +900,8 @@
                         <div class="conv-label">Erdgas-Volumen</div>
                     </div>
                     <div class="conversion-item">
-                        <div class="conv-value">2.5 Mrd. €</div>
-                        <div class="conv-label">Marktwert (TTF: 36 €/MWh)</div>
+                        <div class="conv-value">2.7 Mrd. €</div>
+                        <div class="conv-label">Marktwert (TTF: 40 €/MWh)</div>
                     </div>
                     <div class="conversion-item">
                         <div class="conv-value">484 Mio.</div>
@@ -972,7 +939,7 @@
         <div class="card" style="grid-column: 1 / -1; margin-top: 1.5rem;">
             <h2>🏢 Deutsche Gasspeicher – Betreiber & Speicher</h2>
             <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">
-                24 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
+                25 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
             </div>
             <div class="facility-matrix">
                 
@@ -1236,6 +1203,19 @@
                         <div class="tile-bar"><div class="tile-bar-fill" style="width:26%"></div></div>
                         <div class="tile-trend" style="color:#ff6b6b">-0.13%/d</div>
                     </div>
+                    <div class="facility-tile" style="background: rgba(243, 156, 18, 0.85);">
+                        <div class="tile-tooltip">
+                            <strong>EDF Gas Deutschland</strong><br>
+                            Füllstand: 29.6% | Trend: ±0%/Tag<br>
+                            Kapazität: 2.0 TWh | Gespeichert: 0.6 TWh
+                        </div>
+                        <div class="trend-arrow" style="color:#999">●</div>
+                        <div class="tile-name">EDF Gas Deutschl…</div>
+                        <div class="tile-pct">30%</div>
+                        <div class="tile-capacity">2.0 TWh</div>
+                        <div class="tile-bar"><div class="tile-bar-fill" style="width:30%"></div></div>
+                        <div class="tile-trend" style="color:#aaa">±0%/d</div>
+                    </div>
                     <div class="facility-tile" style="background: rgba(241, 196, 15, 0.75);">
                         <div class="tile-tooltip">
                             <strong>Eneco Gasspeicher</strong><br>
@@ -1305,14 +1285,14 @@
 
         </div><!-- /section Gasspeicher -->
 
-        <!-- ============ HEIZKOSTEN ============ -->
+        <!-- ============ ENERGIETRÄGER ============ -->
         <div class="section">
             <div class="section-header">
                 <h2>Energieträger im Vergleich</h2>
                 <span class="section-badge" style="background:#3498db; color:#fff;">5 Energieträger</span>
             </div>
             <div style="margin: -0.75rem 0 1rem 0; font-size: 0.85rem; color: #aaa;">
-                Günstigster Energieträger: <strong style="color: #8B4513;">Holz (Buche)</strong> (4.8 ct/kWh) – Diversifikation schützt vor Preissprüngen
+                5 Energieträger bewertet nach Preis, Risiko und Krisenfestigkeit. Günstigster: <strong style="color: #8B4513;">Holz (Buche)</strong> (4.8 ct/kWh) – resilientester: <strong style="color: #8B4513;">Holz</strong> (5/5)
             </div>
 
         <!-- Ishikawa: Ursachen für Versorgungsrisiko -->
@@ -1435,14 +1415,14 @@
                         <div class="heating-row">
                             <div class="heating-label">Erdgas</div>
                             <div class="heating-bar-bg">
-                                <div class="heating-bar" style="width:96%;background:#3498db;">
-                                    <span>8.6 ct</span>
+                                <div class="heating-bar" style="width:100%;background:#3498db;">
+                                    <span>9.0 ct</span>
                                 </div>
                             </div>
                             <div class="heating-source">TTF live <span style="background:#27ae60;color:#fff;font-size:0.6rem;padding:1px 4px;border-radius:3px;margin-left:4px;">LIVE</span></div>
                         </div>
                         <div class="heating-row">
-                            <div class="heating-label">Wärmepumpe</div>
+                            <div class="heating-label">Strom (WP)</div>
                             <div class="heating-bar-bg">
                                 <div class="heating-bar" style="width:100%;background:#27ae60;">
                                     <span>9.0 ct</span>
@@ -1452,7 +1432,7 @@
                         </div>
             </div>
             <div style="font-size: 0.7rem; color: #666; line-height: 1.6;">
-                Endverbraucher-Näherung inkl. Steuern & Netzentgelte. Gas/Strom: Großhandel + Aufschlag. Wärmepumpe: Strompreis ÷ COP 3.5.
+                Endverbraucher-Näherung inkl. Steuern & Netzentgelte. Gas/Strom: Großhandel + Aufschlag. Strom (WP): Strompreis ÷ COP 3.5.
             </div>
         </div>
 
@@ -1464,7 +1444,7 @@
                 <!-- Header -->
                 <div class="risk-header row-label"></div>
                 <div class="risk-header" style="color:#3498db;">Erdgas</div>
-                <div class="risk-header" style="color:#27ae60;">Wärmepumpe</div>
+                <div class="risk-header" style="color:#27ae60;">Strom (WP)</div>
                 <div class="risk-header" style="color:#8B4513;">Holz</div>
                 <div class="risk-header" style="color:#D2691E;">Pellets</div>
                 <div class="risk-header" style="color:#7f8c8d;">Heizöl</div>
@@ -1518,31 +1498,31 @@
                 <div class="risk-cell"><span class="risk-score medium">3/5</span></div>
             </div>
             <div style="margin-top: 1rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">
-                <strong style="color: #f39c12;">Erkenntnis:</strong> Gas und Wärmepumpe sind günstig im Normalbetrieb – aber bei Netzausfall oder Lieferengpass stehen Sie ohne Wärme da. Holz und Pellets funktionieren unabhängig vom Netz und von Importen.
+                <strong style="color: #f39c12;">Erkenntnis:</strong> Gas und Strom sind günstig im Normalbetrieb – aber bei Netzausfall oder Lieferengpass stehen Sie ohne Wärme da. Holz und Pellets funktionieren unabhängig vom Netz und von Importen.
             </div>
         </div>
 
         <!-- Diversifikations-Effekt -->
         <div class="card" style="margin-bottom: 1.5rem;">
             <h2>Diversifikations-Effekt: Was bringt ein zweiter Energieträger?</h2>
-            <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">Szenario: Gaspreis steigt um 50% (von 8.6 auf 10.4 ct/kWh). Wintermonat, 2,500 kWh Heizbedarf.</div>
+            <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">Szenario: Gaspreis steigt um 50% (von 9.0 auf 11.0 ct/kWh). Wintermonat, 2,500 kWh Heizbedarf.</div>
             <div class="diversification-compare">
                 <div class="div-scenario mono">
                     <div class="div-label"><strong>100% Gas</strong><br>Ein Energieträger</div>
-                    <div class="div-cost" style="color: #e74c3c;">+45 EUR</div>
+                    <div class="div-cost" style="color: #e74c3c;">+50 EUR</div>
                     <div style="font-size: 0.8rem; color: #aaa;">Mehrkosten pro Monat</div>
                     <div class="div-risk">
                         <span style="color: #e74c3c;">Kein Ausweichen möglich</span><br>
-                        <span style="font-size: 0.75rem; color: #888;">Normal: 215 EUR → Krise: 260 EUR</span>
+                        <span style="font-size: 0.75rem; color: #888;">Normal: 225 EUR → Krise: 275 EUR</span>
                     </div>
                 </div>
                 <div class="div-scenario hybrid">
                     <div class="div-label"><strong>60% Gas + 40% Holz</strong><br>Zwei Energieträger</div>
-                    <div class="div-cost" style="color: #27ae60;">+27 EUR</div>
+                    <div class="div-cost" style="color: #27ae60;">+30 EUR</div>
                     <div style="font-size: 0.8rem; color: #aaa;">Mehrkosten pro Monat</div>
                     <div class="div-risk">
                         <span style="color: #27ae60;">40% weniger Preisrisiko</span><br>
-                        <span style="font-size: 0.75rem; color: #888;">Normal: 177 EUR → Krise: 204 EUR</span>
+                        <span style="font-size: 0.75rem; color: #888;">Normal: 183 EUR → Krise: 213 EUR</span>
                     </div>
                 </div>
             </div>
@@ -1552,7 +1532,7 @@
         </div>
 
         <!-- Resilienz-Check: 3 Ebenen -->
-        <div class="card" style="margin-bottom: 1.5rem; grid-column: 1 / -1;">
+        <div id="plan-b" class="card" style="margin-bottom: 1.5rem; grid-column: 1 / -1;">
             <h2>Haben Sie einen Plan B?</h2>
             <div style="font-size: 0.85rem; color: #888; margin-bottom: 1.25rem;">Was passiert, wenn Ihr Hauptenergieträger ausfällt? Drei Fragen, die Sie sich stellen sollten.</div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
@@ -1611,7 +1591,7 @@
             </div>
         </div>
 
-        </div><!-- /section Heizkosten -->
+        </div><!-- /section Energieträger -->
 
         <!-- Footer -->
         <div class="footer">
