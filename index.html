@@ -235,6 +235,43 @@
         .spark-profitable { color: #27ae60; }
         .spark-unprofitable { color: #e74c3c; }
 
+        /* Stacked Card (Import + Wetter) */
+        .stacked-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .stacked-card .stacked-section h2 {
+            margin-top: 0;
+        }
+        .stacked-divider {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 1rem 0;
+        }
+
+        /* Umrechnungen */
+        .conversion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .conversion-item {
+            background: rgba(255,255,255,0.05);
+            padding: 0.75rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .conv-value {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #3498db;
+        }
+        .conv-label {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
         /* Emergency Scenarios */
         .emergency-item {
             background: rgba(231, 76, 60, 0.1);
@@ -640,50 +677,51 @@
                 </div>
             </div>
 
-            <!-- Import Flow -->
-            <div class="card">
-                <h2>📍 Import-Flow (GWh/Tag)</h2>
-                <div class="import-flow">
-                    <div class="import-item">
-                        <span class="country">🇳🇴 Norwegen</span>
-                        <span class="value">1,373</span>
-                    </div>
-                    <div class="import-item">
-                        <span class="country">🇳🇱 Niederlande</span>
-                        <span class="value">829</span>
-                    </div>
-                    <div class="import-item">
-                        <span class="country">🇧🇪 Belgien</span>
-                        <span class="value">707</span>
-                    </div>
-                    <div class="import-item">
-                        <span class="country">🚢 LNG</span>
-                        <span class="value">88</span>
-                    </div>
-                    <div class="import-item import-total">
-                        <span class="country"><strong>Σ Gesamt</strong></span>
-                        <span class="value">2,997</span>
+            <!-- Import Flow + Wetter-Szenarien (gestapelt) -->
+            <div class="card stacked-card">
+                <div class="stacked-section">
+                    <h2>📍 Import-Flow (GWh/Tag)</h2>
+                    <div class="import-flow">
+                        <div class="import-item">
+                            <span class="country">🇳🇴 Norwegen</span>
+                            <span class="value">1,336</span>
+                        </div>
+                        <div class="import-item">
+                            <span class="country">🇳🇱 Niederlande</span>
+                            <span class="value">764</span>
+                        </div>
+                        <div class="import-item">
+                            <span class="country">🇧🇪 Belgien</span>
+                            <span class="value">698</span>
+                        </div>
+                        <div class="import-item">
+                            <span class="country">🚢 LNG</span>
+                            <span class="value">245</span>
+                        </div>
+                        <div class="import-item import-total">
+                            <span class="country"><strong>Σ Gesamt</strong></span>
+                            <span class="value">3,043</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Weather Scenarios -->
-            <div class="card">
-                <h2>❄️ Wetter-Szenarien (30 Tage)</h2>
-                <div class="scenario-row">
-                    <span class="scenario-label">Kältewelle ❄️</span>
-                    <span class="scenario-value scenario-cold">8.1%</span>
-                </div>
-                <div class="scenario-row">
-                    <span class="scenario-label">Normal 🌤️</span>
-                    <span class="scenario-value scenario-normal">13.3%</span>
-                </div>
-                <div class="scenario-row">
-                    <span class="scenario-label">Milde Witterung 🌡️</span>
-                    <span class="scenario-value scenario-mild">16.6%</span>
-                </div>
-                <div style="margin-top: 1rem; font-size: 0.8rem; color: #666;">
-                    Kältewelle: +50% Verbrauch | Mild: -30% Verbrauch
+                <div class="stacked-divider"></div>
+                <div class="stacked-section">
+                    <h2>❄️ Wetter-Szenarien (30 Tage)</h2>
+                    <div class="scenario-row">
+                        <span class="scenario-label">Kältewelle ❄️</span>
+                        <span class="scenario-value scenario-cold">8.1%</span>
+                    </div>
+                    <div class="scenario-row">
+                        <span class="scenario-label">Normal 🌤️</span>
+                        <span class="scenario-value scenario-normal">13.3%</span>
+                    </div>
+                    <div class="scenario-row">
+                        <span class="scenario-label">Milde Witterung 🌡️</span>
+                        <span class="scenario-value scenario-mild">16.6%</span>
+                    </div>
+                    <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #666;">
+                        Kältewelle: +50% Verbrauch | Mild: -30% Verbrauch
+                    </div>
                 </div>
             </div>
 
@@ -711,6 +749,32 @@
                     Quellen: Gas (TTF) | Strom (EPEX Spot (energy-charts.info))
                 </div>
             </div>
+
+            <!-- Umrechnungen -->
+            <div class="card">
+                <h2>🔄 Umrechnungen</h2>
+                <div class="conversion-list">
+                    <div class="conversion-item">
+                        <div class="conv-value">69.4 TWh</div>
+                        <div class="conv-label">Gespeicherte Energie</div>
+                    </div>
+                    <div class="conversion-item">
+                        <div class="conv-value">489 Mio.</div>
+                        <div class="conv-label">11-kg-Gasflaschen</div>
+                    </div>
+                    <div class="conversion-item">
+                        <div class="conv-value">3.5 Mio.</div>
+                        <div class="conv-label">Haushalte (1 Jahr Heizung)</div>
+                    </div>
+                    <div class="conversion-item">
+                        <div class="conv-value">63 Tage</div>
+                        <div class="conv-label">Versorgung aller 20 Mio. Gas-HH</div>
+                    </div>
+                </div>
+                <div style="margin-top: 0.75rem; font-size: 0.7rem; color: #666;">
+                    Basis: 20.000 kWh/HH/Jahr | 142 kWh/Flasche
+                </div>
+            </div>
         </div>
 
         <!-- Forecast Chart -->
@@ -730,7 +794,7 @@
         <div class="card" style="grid-column: 1 / -1; margin-top: 1.5rem;">
             <h2>🏢 Deutsche Gasspeicher – Betreiber & Speicher</h2>
             <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">
-                24 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
+                25 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
             </div>
             <div class="facility-matrix">
                 
@@ -915,6 +979,19 @@
                         <div class="tile-capacity">2.4 TWh</div>
                         <div class="tile-bar"><div class="tile-bar-fill" style="width:34%"></div></div>
                         <div class="tile-trend" style="color:#ff6b6b">-0.01%/d</div>
+                    </div>
+                    <div class="facility-tile" style="background: rgba(46, 204, 113, 0.75);">
+                        <div class="tile-tooltip">
+                            <strong>enercity</strong><br>
+                            Füllstand: 53.5% | Trend: +0.08%/Tag<br>
+                            Kapazität: 2.3 TWh | Gespeichert: 1.2 TWh
+                        </div>
+                        <div class="trend-arrow" style="color:#2ecc71">▲</div>
+                        <div class="tile-name">enercity</div>
+                        <div class="tile-pct">54%</div>
+                        <div class="tile-capacity">2.3 TWh</div>
+                        <div class="tile-bar"><div class="tile-bar-fill" style="width:54%"></div></div>
+                        <div class="tile-trend" style="color:#6bff6b">+0.08%/d</div>
                     </div>
                     <div class="facility-tile" style="background: rgba(241, 196, 15, 0.75);">
                         <div class="tile-tooltip">
