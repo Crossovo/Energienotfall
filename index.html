@@ -340,6 +340,93 @@
             color: #888;
         }
 
+        /* Risikoprofil Matrix */
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: 140px repeat(5, 1fr);
+            gap: 2px;
+            font-size: 0.8rem;
+        }
+        .risk-header {
+            background: rgba(255,255,255,0.1);
+            padding: 0.6rem 0.5rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .risk-header.row-label {
+            text-align: right;
+            padding-right: 1rem;
+            background: transparent;
+            color: #aaa;
+        }
+        .risk-cell {
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .risk-good { background: rgba(39,174,96,0.15); color: #27ae60; }
+        .risk-bad { background: rgba(231,76,60,0.15); color: #e74c3c; }
+        .risk-mixed { background: rgba(243,156,18,0.15); color: #f39c12; }
+        .risk-score {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .risk-score.high { color: #27ae60; }
+        .risk-score.medium { color: #f39c12; }
+        .risk-score.low { color: #e74c3c; }
+        @media (max-width: 768px) {
+            .risk-matrix {
+                grid-template-columns: 100px repeat(5, 1fr);
+                font-size: 0.65rem;
+            }
+            .risk-cell { padding: 0.35rem 0.25rem; font-size: 0.75rem; }
+        }
+
+        /* Diversifikations-Effekt */
+        .diversification-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+        .div-scenario {
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .div-scenario.mono {
+            background: rgba(231,76,60,0.1);
+            border: 1px solid rgba(231,76,60,0.3);
+        }
+        .div-scenario.hybrid {
+            background: rgba(39,174,96,0.1);
+            border: 1px solid rgba(39,174,96,0.3);
+        }
+        .div-label {
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            color: #ccc;
+        }
+        .div-cost {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        .div-risk {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 600px) {
+            .diversification-compare {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Emergency Scenarios */
         .emergency-item {
             background: rgba(231, 76, 60, 0.1);
@@ -449,13 +536,13 @@
             left: 0;
             right: 80px;
             height: 4px;
-            background: linear-gradient(90deg, #3498db, #e67e22);
+            background: linear-gradient(90deg, #3498db, #e74c3c);
             transform: translateY(-50%);
         }
         .fishbone-head {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #e67e22, #d35400);
+            width: 85px;
+            height: 85px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -465,7 +552,7 @@
             text-align: center;
             color: white;
             z-index: 2;
-            box-shadow: 0 0 20px rgba(230, 126, 34, 0.4);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
         }
         .fishbone-categories {
             display: flex;
@@ -485,11 +572,12 @@
             min-width: 160px;
             border-left: 3px solid;
         }
-        .fishbone-branch.climate { border-color: #3498db; }
-        .fishbone-branch.market { border-color: #e67e22; }
-        .fishbone-branch.tech { border-color: #27ae60; }
-        .fishbone-branch.taxes { border-color: #9b59b6; }
-        .fishbone-branch.avail { border-color: #1abc9c; }
+        .fishbone-branch.technik { border-color: #3498db; }
+        .fishbone-branch.prozess { border-color: #e67e22; }
+        .fishbone-branch.mensch { border-color: #27ae60; }
+        .fishbone-branch.brennstoff { border-color: #9b59b6; }
+        .fishbone-branch.umfeld { border-color: #1abc9c; }
+        .fishbone-branch.management { border-color: #e74c3c; }
         .branch-title {
             font-weight: bold;
             font-size: 0.85rem;
@@ -884,7 +972,7 @@
         <div class="card" style="grid-column: 1 / -1; margin-top: 1.5rem;">
             <h2>🏢 Deutsche Gasspeicher – Betreiber & Speicher</h2>
             <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">
-                24 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
+                25 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
             </div>
             <div class="facility-matrix">
                 
@@ -926,6 +1014,19 @@
                         <div class="tile-capacity">24.2 TWh</div>
                         <div class="tile-bar"><div class="tile-bar-fill" style="width:30%"></div></div>
                         <div class="tile-trend" style="color:#ff6b6b">-0.45%/d</div>
+                    </div>
+                    <div class="facility-tile" style="background: rgba(243, 156, 18, 0.85);">
+                        <div class="tile-tooltip">
+                            <strong>Storengy Deutschland</strong><br>
+                            Speicher: UGS Uelsen, UGS Harsefeld, UGS Peckensen, UGS Lesum, UGS Schmidhausen<br>Füllstand: 25.9% | Trend: -0.48%/Tag<br>
+                            Kapazität: 18.5 TWh | Gespeichert: 4.8 TWh
+                        </div>
+                        <div class="trend-arrow" style="color:#e74c3c">▼</div>
+                        <div class="tile-name">Storengy Deutsch…</div>
+                        <div class="tile-pct">26%</div>
+                        <div class="tile-capacity">18.5 TWh</div>
+                        <div class="tile-bar"><div class="tile-bar-fill" style="width:26%"></div></div>
+                        <div class="tile-trend" style="color:#ff6b6b">-0.48%/d</div>
                     </div>
                     <div class="facility-tile" style="background: rgba(243, 156, 18, 0.85);">
                         <div class="tile-tooltip">
@@ -1220,83 +1321,94 @@
         <!-- ============ HEIZKOSTEN ============ -->
         <div class="section">
             <div class="section-header">
-                <h2>Heizkosten im Vergleich</h2>
+                <h2>Energieträger im Vergleich</h2>
                 <span class="section-badge" style="background:#3498db; color:#fff;">5 Energieträger</span>
             </div>
             <div style="margin: -0.75rem 0 1rem 0; font-size: 0.85rem; color: #aaa;">
                 Günstigster Energieträger: <strong style="color: #8B4513;">Holz (Buche)</strong> (4.8 ct/kWh) – Diversifikation schützt vor Preissprüngen
             </div>
 
-        <!-- Einflussfaktoren auf Heizkosten -->
+        <!-- Ishikawa: Ursachen für Versorgungsrisiko -->
         <div class="fishbone-container">
-            <h2 style="text-align: center; margin-bottom: 1.5rem;">Was beeinflusst Ihre Heizkosten?</h2>
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Warum braucht Energie einen Plan B?</h2>
             <div class="fishbone">
                 <div class="fishbone-spine">
                     <div class="fishbone-categories">
-                        <!-- Obere Reihe -->
+                        <!-- Obere Reihe: Equipment, Process, People -->
                         <div class="fishbone-row">
-                            <div class="fishbone-branch climate">
-                                <div class="branch-title">🌡️ KLIMA & WETTER</div>
+                            <div class="fishbone-branch technik">
+                                <div class="branch-title">⚙️ TECHNIK</div>
                                 <div class="branch-items">
-                                    • Heizgradtage pro Winter<br>
-                                    • Kältewellen / milde Phase<br>
-                                    • Sonnenstunden (WP-Effizienz)
+                                    • Heizkessel nur für einen Brennstoff<br>
+                                    • Keine Notstromversorgung<br>
+                                    • Veraltete Anlagentechnik
                                 </div>
                                 <div class="branch-impact">
-                                    Impact: <span class="impact-value variable">±30-50%</span> Verbrauch
+                                    Folge: <span class="impact-value negative">Kein Ausweichen bei Ausfall</span>
                                 </div>
                             </div>
-                            <div class="fishbone-branch market">
-                                <div class="branch-title">🌍 WELTMARKT</div>
+                            <div class="fishbone-branch prozess">
+                                <div class="branch-title">🔄 PROZESS</div>
                                 <div class="branch-items">
-                                    • TTF-Gaspreis (Börse)<br>
-                                    • Brent-Ölpreis → Heizöl<br>
-                                    • Holz- & Pellet-Nachfrage
+                                    • Kein Umschaltkonzept vorhanden<br>
+                                    • Nur ein Liefervertrag<br>
+                                    • Keine Wartungsstrategie
                                 </div>
                                 <div class="branch-impact">
-                                    Gas/Öl: <span class="impact-value negative">Hohe Volatilität</span>
+                                    Folge: <span class="impact-value negative">Lange Ausfallzeiten</span>
                                 </div>
                             </div>
-                            <div class="fishbone-branch tech">
-                                <div class="branch-title">⚡ TECHNIK & EFFIZIENZ</div>
+                            <div class="fishbone-branch mensch">
+                                <div class="branch-title">👥 MENSCH</div>
                                 <div class="branch-items">
-                                    • Wärmepumpe COP 3–5<br>
-                                    • Brennwert-Technik<br>
-                                    • Dämmung & Gebäudehülle
+                                    • Kein Bewusstsein für Risiken<br>
+                                    • Keine Notfallübung<br>
+                                    • Abhängigkeit von externen Experten
                                 </div>
                                 <div class="branch-impact">
-                                    Sparpotenzial: <span class="impact-value positive">20-60%</span>
+                                    Folge: <span class="impact-value negative">Handlungsunfähig im Ernstfall</span>
                                 </div>
                             </div>
                         </div>
-                        <!-- Untere Reihe -->
+                        <!-- Untere Reihe: Material, Environment, Management -->
                         <div class="fishbone-row">
-                            <div class="fishbone-branch taxes">
-                                <div class="branch-title">⚖️ STEUERN & ABGABEN</div>
+                            <div class="fishbone-branch brennstoff">
+                                <div class="branch-title">🔥 BRENNSTOFF</div>
                                 <div class="branch-items">
-                                    • CO₂-Steuer (steigend)<br>
-                                    • Netzentgelte (Strom/Gas)<br>
-                                    • Förderprogramme (BEG/KfW)
+                                    • Kein Lager (Gas, Strom)<br>
+                                    • Importabhängig (Gas, Öl)<br>
+                                    • Nur ein Energieträger
                                 </div>
                                 <div class="branch-impact">
-                                    Anteil: <span class="impact-value variable">20-40%</span> vom Endpreis
+                                    Folge: <span class="impact-value negative">Sofort betroffen bei Engpass</span>
                                 </div>
                             </div>
-                            <div class="fishbone-branch avail">
-                                <div class="branch-title">🚚 VERFÜGBARKEIT</div>
+                            <div class="fishbone-branch umfeld">
+                                <div class="branch-title">🌍 UMFELD</div>
                                 <div class="branch-items">
-                                    • Pellet-Produktion (regional)<br>
-                                    • LNG-Terminals / Pipeline<br>
-                                    • Holzeinschlag-Saison
+                                    • Kältewelle / Dunkelflaute<br>
+                                    • Geopolitische Krisen<br>
+                                    • Preissprünge am Weltmarkt
                                 </div>
                                 <div class="branch-impact">
-                                    Holz/Pellets: <span class="impact-value positive">Regional stabil</span>
+                                    Folge: <span class="impact-value variable">Nicht beeinflussbar</span>
+                                </div>
+                            </div>
+                            <div class="fishbone-branch management">
+                                <div class="branch-title">📋 MANAGEMENT</div>
+                                <div class="branch-items">
+                                    • Kein Plan B dokumentiert<br>
+                                    • Kein Budget für Redundanz<br>
+                                    • Risiko nie bewertet
+                                </div>
+                                <div class="branch-impact">
+                                    Folge: <span class="impact-value negative">Strategisches Versäumnis</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="fishbone-head">
-                        HEIZ<br>KOSTEN
+                        AUSFALL<br>RISIKO
                     </div>
                 </div>
             </div>
@@ -1354,6 +1466,101 @@
             </div>
             <div style="font-size: 0.7rem; color: #666; line-height: 1.6;">
                 Endverbraucher-Näherung inkl. Steuern & Netzentgelte. Gas/Strom: Großhandel + Aufschlag. Wärmepumpe: Strompreis ÷ COP 3.5.
+            </div>
+        </div>
+
+        <!-- Risikoprofil: Energieträger im Vergleich -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <h2>Risikoprofil: Wie krisenfest ist Ihr Energieträger?</h2>
+            <div style="font-size: 0.8rem; color: #888; margin-bottom: 1rem;">Nicht nur der Preis zählt – sondern ob Ihre Heizung auch in der Krise läuft.</div>
+            <div class="risk-matrix">
+                <!-- Header -->
+                <div class="risk-header row-label"></div>
+                <div class="risk-header" style="color:#3498db;">Erdgas</div>
+                <div class="risk-header" style="color:#27ae60;">Wärmepumpe</div>
+                <div class="risk-header" style="color:#8B4513;">Holz</div>
+                <div class="risk-header" style="color:#D2691E;">Pellets</div>
+                <div class="risk-header" style="color:#2c3e50;">Heizöl</div>
+
+                <!-- Netzabhängig -->
+                <div class="risk-header row-label">Netzabhängig?</div>
+                <div class="risk-cell risk-bad">Ja</div>
+                <div class="risk-cell risk-bad">Ja</div>
+                <div class="risk-cell risk-good">Nein</div>
+                <div class="risk-cell risk-good">Nein</div>
+                <div class="risk-cell risk-good">Nein</div>
+
+                <!-- Preisvolatil -->
+                <div class="risk-header row-label">Preis volatil?</div>
+                <div class="risk-cell risk-bad">Hoch</div>
+                <div class="risk-cell risk-bad">Hoch</div>
+                <div class="risk-cell risk-good">Stabil</div>
+                <div class="risk-cell risk-good">Stabil</div>
+                <div class="risk-cell risk-mixed">Mittel</div>
+
+                <!-- Lagerfähig -->
+                <div class="risk-header row-label">Lagerfähig?</div>
+                <div class="risk-cell risk-bad">Nein</div>
+                <div class="risk-cell risk-bad">Nein</div>
+                <div class="risk-cell risk-good">Ja</div>
+                <div class="risk-cell risk-good">Ja</div>
+                <div class="risk-cell risk-good">Ja (Tank)</div>
+
+                <!-- Importabhängig -->
+                <div class="risk-header row-label">Importabhängig?</div>
+                <div class="risk-cell risk-bad">Ja</div>
+                <div class="risk-cell risk-mixed">Teils</div>
+                <div class="risk-cell risk-good">Nein</div>
+                <div class="risk-cell risk-mixed">Teils</div>
+                <div class="risk-cell risk-bad">Ja</div>
+
+                <!-- Autark nutzbar -->
+                <div class="risk-header row-label">Autark nutzbar?</div>
+                <div class="risk-cell risk-bad">Nein</div>
+                <div class="risk-cell risk-bad">Nein</div>
+                <div class="risk-cell risk-good">Ja</div>
+                <div class="risk-cell risk-good">Ja</div>
+                <div class="risk-cell risk-good">Ja</div>
+
+                <!-- Resilienz-Score -->
+                <div class="risk-header row-label" style="font-weight: bold; color: #fff;">Resilienz</div>
+                <div class="risk-cell"><span class="risk-score low">1/5</span></div>
+                <div class="risk-cell"><span class="risk-score low">1/5</span></div>
+                <div class="risk-cell"><span class="risk-score high">5/5</span></div>
+                <div class="risk-cell"><span class="risk-score high">4/5</span></div>
+                <div class="risk-cell"><span class="risk-score medium">3/5</span></div>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">
+                <strong style="color: #f39c12;">Erkenntnis:</strong> Gas und Wärmepumpe sind günstig im Normalbetrieb – aber bei Netzausfall oder Lieferengpass stehen Sie ohne Wärme da. Holz und Pellets funktionieren unabhängig vom Netz und von Importen.
+            </div>
+        </div>
+
+        <!-- Diversifikations-Effekt -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <h2>Diversifikations-Effekt: Was bringt ein zweiter Energieträger?</h2>
+            <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">Szenario: Gaspreis steigt um 50% (von 8.6 auf 10.4 ct/kWh). Wintermonat, 2,500 kWh Heizbedarf.</div>
+            <div class="diversification-compare">
+                <div class="div-scenario mono">
+                    <div class="div-label"><strong>100% Gas</strong><br>Ein Energieträger</div>
+                    <div class="div-cost" style="color: #e74c3c;">+45 EUR</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">Mehrkosten pro Monat</div>
+                    <div class="div-risk">
+                        <span style="color: #e74c3c;">Kein Ausweichen möglich</span><br>
+                        <span style="font-size: 0.75rem; color: #888;">Normal: 215 EUR → Krise: 260 EUR</span>
+                    </div>
+                </div>
+                <div class="div-scenario hybrid">
+                    <div class="div-label"><strong>60% Gas + 40% Holz</strong><br>Zwei Energieträger</div>
+                    <div class="div-cost" style="color: #27ae60;">+27 EUR</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">Mehrkosten pro Monat</div>
+                    <div class="div-risk">
+                        <span style="color: #27ae60;">40% weniger Preisrisiko</span><br>
+                        <span style="font-size: 0.75rem; color: #888;">Normal: 177 EUR → Krise: 204 EUR</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(39,174,96,0.1); border-left: 3px solid #27ae60; border-radius: 4px; font-size: 0.8rem; color: #ccc; line-height: 1.6;">
+                <strong>Diversifikation ist doppelter Schutz:</strong> Weniger Preisrisiko bei Preissprüngen – und weiter heizen, wenn ein Energieträger komplett ausfällt.
             </div>
         </div>
 
