@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energienotfall.de - Gasspeicher 27.6% | 08.02.2026</title>
+    <title>Energienotfall.de - Energielage Deutschland | Gasspeicher 27.6% | 08.02.2026</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Energienotfall.de: Erhöhte Aufmerksamkeit. Speicherstand unter Beobachtung. Füllstand 27.6%, Trend -0.68%/Tag. Prognose-Tiefpunkt: 6.4%. Privates Projekt · Keine offizielle Behördenseite">
-    <meta name="keywords" content="Gasspeicher, Deutschland, Füllstand, Gaspreis, Energiekrise, Gasversorgung, TTF, Erdgas, Speicherstand">
+    <meta name="description" content="Energienotfall.de: Versorgungssicherheit braucht mehr als eine Energiequelle. Gasspeicher 27.6%, Trend -0.68%/Tag. Heizkosten-Vergleich: Gas, Strom, Holz, Pellets, Heizöl.">
+    <meta name="keywords" content="Energielage, Gasspeicher, Deutschland, Füllstand, Gaspreis, Heizkosten, Wärmepumpe, Pellets, Heizöl, TTF, Energiekrise, Gasversorgung">
     <meta name="author" content="Energienotfall.de">
     <meta name="robots" content="index, follow">
 
@@ -76,18 +76,42 @@
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            width: 16px;
-            height: 16px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            animation: header-glow 2s ease-in-out infinite;
+            animation: header-glow 3s ease-in-out infinite;
         }
         @keyframes header-glow {
-            0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px currentColor; }
-            50% { transform: scale(1.4); opacity: 0.6; box-shadow: 0 0 20px currentColor; }
+            0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 6px currentColor; }
+            50% { transform: scale(1.15); opacity: 0.5; box-shadow: 0 0 12px currentColor; }
         }
         .header .subtitle {
             color: #888;
             font-size: 0.9rem;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 2rem;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .section-header h2 {
+            font-size: 1.4rem;
+            margin: 0;
+            color: #fff;
+        }
+        .section-header .section-badge {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: bold;
         }
 
         /* Signal Ampel */
@@ -115,7 +139,7 @@
         .signal-green { background: radial-gradient(circle, #27ae60, #1e8449); color: #27ae60; }
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+            50% { transform: scale(1.02); opacity: 0.9; }
         }
         .signal-label {
             font-size: 1.5rem;
@@ -272,6 +296,50 @@
             color: #aaa;
         }
 
+        /* Heizkosten-Vergleich */
+        .heating-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+        .heating-label {
+            width: 110px;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .heating-bar-bg {
+            flex: 1;
+            height: 28px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .heating-bar {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            min-width: 40px;
+            transition: width 0.5s ease;
+        }
+        .heating-bar span {
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        .heating-source {
+            width: 140px;
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            color: #888;
+        }
+
         /* Emergency Scenarios */
         .emergency-item {
             background: rgba(231, 76, 60, 0.1);
@@ -381,13 +449,13 @@
             left: 0;
             right: 80px;
             height: 4px;
-            background: linear-gradient(90deg, #3498db, #e74c3c);
+            background: linear-gradient(90deg, #3498db, #e67e22);
             transform: translateY(-50%);
         }
         .fishbone-head {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            background: linear-gradient(135deg, #e67e22, #d35400);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -397,7 +465,7 @@
             text-align: center;
             color: white;
             z-index: 2;
-            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+            box-shadow: 0 0 20px rgba(230, 126, 34, 0.4);
         }
         .fishbone-categories {
             display: flex;
@@ -417,11 +485,11 @@
             min-width: 160px;
             border-left: 3px solid;
         }
-        .fishbone-branch.weather { border-color: #3498db; }
-        .fishbone-branch.demand { border-color: #e74c3c; }
-        .fishbone-branch.supply { border-color: #27ae60; }
-        .fishbone-branch.policy { border-color: #9b59b6; }
-        .fishbone-branch.infra { border-color: #f39c12; }
+        .fishbone-branch.climate { border-color: #3498db; }
+        .fishbone-branch.market { border-color: #e67e22; }
+        .fishbone-branch.tech { border-color: #27ae60; }
+        .fishbone-branch.taxes { border-color: #9b59b6; }
+        .fishbone-branch.avail { border-color: #1abc9c; }
         .branch-title {
             font-weight: bold;
             font-size: 0.85rem;
@@ -594,25 +662,26 @@
     <div class="container">
         <div class="header">
             <div class="header-pulse" style="background:#f39c12; color:#f39c12;"></div>
-            <h1>Aktueller Gasfüllstand Deutschland: 27.6% (69.4 TWh)</h1>
-            <div class="subtitle">Privates Projekt · Keine offizielle Behördenseite | Stand: 06.02.2026</div>
+            <h1>Energielage Deutschland</h1>
+            <div class="subtitle">Versorgungssicherheit braucht mehr als eine Energiequelle | Stand: 06.02.2026</div>
         </div>
 
-        <!-- Status + Gauge Row -->
-        <div class="status-gauge-row" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: stretch;">
-            <div class="card" style="flex: 2; margin-bottom: 0;">
-                <h2>🔔 Status-Meldungen</h2>
-                
-                <div class="alert alert-warning">
-                    <div class="alert-icon">⚠️</div>
-                    <div class="alert-content">
-                        <div class="alert-title">Speicherstand unter 30%</div>
-                        <div class="alert-message">Der Füllstand liegt unter dem saisonalen Durchschnitt. Die Gasversorgung ist durch laufende Importe (Norwegen, NL, BE, LNG) weiterhin gesichert. Die Wiederbefüllung beginnt voraussichtlich im Frühjahr.</div>
-                    </div>
-                </div>
-                
+        <!-- ============ GASSPEICHER ============ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Gasspeicher Deutschland</h2>
+                <span class="section-badge" style="background:#f39c12; color:#fff;">27.6% &middot; 69.4 TWh</span>
             </div>
-            <div class="card" style="flex: 1; margin-bottom: 0; display: flex; align-items: center; justify-content: center;">
+            <div style="margin: -0.75rem 0 1rem 0; font-size: 0.85rem; color: #aaa; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <span>Importe aktiv ✓</span>
+                <span>Reichweite 40 Tage</span>
+                <span>Trend -0.68%/Tag</span>
+                <span style="color: #4fc3f7;">Ø historisch (Feb): 50%</span>
+            </div>
+
+        <!-- Gauge + Status Row (Gauge zuerst = visueller Anker vor Alarm-Text) -->
+        <div class="status-gauge-row" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: stretch;">
+            <div class="card" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <svg viewBox="0 0 300 190" width="280" height="178" xmlns="http://www.w3.org/2000/svg">
             <path d="M45.0,130.0 A105,105 0 1,1 255.0,130.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="24" opacity="1"/>
             <path d="M45.0,130.0 A105,105 0 0,1 65.1,68.3" fill="none" stroke="#e74c3c" stroke-width="20" opacity="0.8"/>
@@ -646,6 +715,23 @@
             <text x="150" y="174" text-anchor="middle" fill="#999" font-size="11" font-family="sans-serif">69.4 TWh gespeichert</text>
             <text x="150" y="188" text-anchor="middle" fill="#4fc3f7" font-size="9" font-family="sans-serif">-22% vs. Durchschnitt (2012–2022)</text>
         </svg>
+                <div style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 0.5rem;">
+                    Saisonaler Rückgang – im Winterhalbjahr üblich
+                </div>
+            </div>
+            <div class="card" style="flex: 2; margin-bottom: 0;">
+                
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <div class="alert-title">Speicherstand unter 30%</div>
+                        <div class="alert-message">Der Füllstand liegt unter dem saisonalen Durchschnitt. Die Wiederbefüllung beginnt voraussichtlich im Frühjahr.</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 0.5rem; padding: 0.6rem 0.8rem; background: rgba(39,174,96,0.1); border-left: 3px solid #27ae60; border-radius: 4px; font-size: 0.8rem; color: #aaa; line-height: 1.5;">
+                    <strong style="color: #27ae60;">Einordnung:</strong> Gasimporte über Pipeline & LNG laufen planmäßig (3,043 GWh/Tag). Reichweite aktuell <strong>40 Tage</strong>. Wiederbefüllung beginnt typischerweise ab März/April.
+                </div>
             </div>
         </div>
 
@@ -673,7 +759,7 @@
                     </div>
                 </div>
                 <div style="margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.75rem; color: #aaa; line-height: 1.5;">
-                    📋 <strong>Einordnung:</strong> Historischer Tiefpunkt DE: ~17% (März 2022). Gasimporte über Pipeline & LNG laufen weiter. Wiederbefüllung beginnt typischerweise ab März/April.
+                    📋 <strong>Historischer Vergleich:</strong> Ø February: <strong style="color:#4fc3f7;">50%</strong> (2012–2022). Aktuell: 27.6% (-22% vs. Mittel). Abweichung vom Durchschnitt – Importe und Wetter entscheidend.
                 </div>
             </div>
 
@@ -1142,81 +1228,168 @@
             </div>
         </div>
 
-        <!-- Fishbone Diagram: Einflussfaktoren -->
+        </div><!-- /section Gasspeicher -->
+
+        <!-- ============ HEIZKOSTEN ============ -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Heizkosten im Vergleich</h2>
+                <span class="section-badge" style="background:#3498db; color:#fff;">5 Energieträger</span>
+            </div>
+            <div style="margin: -0.75rem 0 1rem 0; font-size: 0.85rem; color: #aaa;">
+                Günstigster Energieträger: <strong style="color: #8B4513;">Holz (Buche)</strong> (4.8 ct/kWh) – Diversifikation schützt vor Preissprüngen
+            </div>
+
+        <!-- Einflussfaktoren auf Heizkosten -->
         <div class="fishbone-container">
-            <h2 style="text-align: center; margin-bottom: 1.5rem;">🐟 Einflussfaktoren auf den Speicherstand</h2>
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Was beeinflusst Ihre Heizkosten?</h2>
             <div class="fishbone">
                 <div class="fishbone-spine">
                     <div class="fishbone-categories">
                         <!-- Obere Reihe -->
                         <div class="fishbone-row">
-                            <div class="fishbone-branch weather">
-                                <div class="branch-title">🌡️ WETTER</div>
+                            <div class="fishbone-branch climate">
+                                <div class="branch-title">🌡️ KLIMA & WETTER</div>
                                 <div class="branch-items">
-                                    • Außentemperatur<br>
-                                    • Frost-Ereignisse<br>
-                                    • Heizgradtage
+                                    • Heizgradtage pro Winter<br>
+                                    • Kältewellen / milde Phase<br>
+                                    • Sonnenstunden (WP-Effizienz)
                                 </div>
                                 <div class="branch-impact">
                                     Impact: <span class="impact-value variable">±30-50%</span> Verbrauch
                                 </div>
                             </div>
-                            <div class="fishbone-branch demand">
-                                <div class="branch-title">🏭 VERBRAUCH</div>
+                            <div class="fishbone-branch market">
+                                <div class="branch-title">🌍 WELTMARKT</div>
                                 <div class="branch-items">
-                                    • Industrie-Produktion<br>
-                                    • Wohnheizung<br>
-                                    • Gaskraftwerke<br>
-                                    • Rechenzentren
+                                    • TTF-Gaspreis (Börse)<br>
+                                    • Brent-Ölpreis → Heizöl<br>
+                                    • Holz- & Pellet-Nachfrage
                                 </div>
                                 <div class="branch-impact">
-                                    Trend: <span class="impact-value negative">+15-20%</span> YoY
+                                    Gas/Öl: <span class="impact-value negative">Hohe Volatilität</span>
                                 </div>
                             </div>
-                            <div class="fishbone-branch supply">
-                                <div class="branch-title">🚢 IMPORT</div>
+                            <div class="fishbone-branch tech">
+                                <div class="branch-title">⚡ TECHNIK & EFFIZIENZ</div>
                                 <div class="branch-items">
-                                    • Norwegen Pipeline<br>
-                                    • NL/BE Transit<br>
-                                    • LNG-Terminals
+                                    • Wärmepumpe COP 3–5<br>
+                                    • Brennwert-Technik<br>
+                                    • Dämmung & Gebäudehülle
                                 </div>
                                 <div class="branch-impact">
-                                    Risiko: <span class="impact-value negative">-45%</span> wenn NO weg
+                                    Sparpotenzial: <span class="impact-value positive">20-60%</span>
                                 </div>
                             </div>
                         </div>
                         <!-- Untere Reihe -->
                         <div class="fishbone-row">
-                            <div class="fishbone-branch policy">
-                                <div class="branch-title">⚖️ POLITIK</div>
+                            <div class="fishbone-branch taxes">
+                                <div class="branch-title">⚖️ STEUERN & ABGABEN</div>
                                 <div class="branch-items">
-                                    • Sanktionen (RU-Gas)<br>
-                                    • EU-Preisdeckel<br>
-                                    • Speicher-Vorgaben
+                                    • CO₂-Steuer (steigend)<br>
+                                    • Netzentgelte (Strom/Gas)<br>
+                                    • Förderprogramme (BEG/KfW)
                                 </div>
                                 <div class="branch-impact">
-                                    Impact: <span class="impact-value variable">Langfristig</span>
+                                    Anteil: <span class="impact-value variable">20-40%</span> vom Endpreis
                                 </div>
                             </div>
-                            <div class="fishbone-branch infra">
-                                <div class="branch-title">🔧 INFRASTRUKTUR</div>
+                            <div class="fishbone-branch avail">
+                                <div class="branch-title">🚚 VERFÜGBARKEIT</div>
                                 <div class="branch-items">
-                                    • Kapazität: 251 TWh<br>
-                                    • Pipeline-Netz<br>
-                                    • Verdichter
+                                    • Pellet-Produktion (regional)<br>
+                                    • LNG-Terminals / Pipeline<br>
+                                    • Holzeinschlag-Saison
                                 </div>
                                 <div class="branch-impact">
-                                    Limit: <span class="impact-value">Physikalisch</span>
+                                    Holz/Pellets: <span class="impact-value positive">Regional stabil</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="fishbone-head">
-                        SPEICHER<br>STAND
+                        HEIZ<br>KOSTEN
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Heizkosten-Vergleich -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div style="margin-bottom: 1rem;">
+                    
+                        <div class="heating-row">
+                            <div class="heating-label">Holz (Buche)</div>
+                            <div class="heating-bar-bg">
+                                <div class="heating-bar" style="width:53%;background:#8B4513;">
+                                    <span>4.8 ct</span>
+                                </div>
+                            </div>
+                            <div class="heating-source">Richtwert 2026-01</div>
+                        </div>
+                        <div class="heating-row">
+                            <div class="heating-label">Pellets</div>
+                            <div class="heating-bar-bg">
+                                <div class="heating-bar" style="width:60%;background:#D2691E;">
+                                    <span>5.4 ct</span>
+                                </div>
+                            </div>
+                            <div class="heating-source">DEPI 2026-01</div>
+                        </div>
+                        <div class="heating-row">
+                            <div class="heating-label">Heizöl</div>
+                            <div class="heating-bar-bg">
+                                <div class="heating-bar" style="width:94%;background:#2c3e50;">
+                                    <span>8.5 ct</span>
+                                </div>
+                            </div>
+                            <div class="heating-source">tecson 2026-02</div>
+                        </div>
+                        <div class="heating-row">
+                            <div class="heating-label">Erdgas</div>
+                            <div class="heating-bar-bg">
+                                <div class="heating-bar" style="width:96%;background:#3498db;">
+                                    <span>8.6 ct</span>
+                                </div>
+                            </div>
+                            <div class="heating-source">TTF live <span style="background:#27ae60;color:#fff;font-size:0.6rem;padding:1px 4px;border-radius:3px;margin-left:4px;">LIVE</span></div>
+                        </div>
+                        <div class="heating-row">
+                            <div class="heating-label">Wärmepumpe</div>
+                            <div class="heating-bar-bg">
+                                <div class="heating-bar" style="width:100%;background:#27ae60;">
+                                    <span>9.0 ct</span>
+                                </div>
+                            </div>
+                            <div class="heating-source">EPEX live (COP 3.5) <span style="background:#27ae60;color:#fff;font-size:0.6rem;padding:1px 4px;border-radius:3px;margin-left:4px;">LIVE</span></div>
+                        </div>
+            </div>
+            <div style="font-size: 0.7rem; color: #666; line-height: 1.6;">
+                Endverbraucher-Näherung inkl. Steuern & Netzentgelte. Gas/Strom: Großhandel + Aufschlag. Wärmepumpe: Strompreis ÷ COP 3.5.
+            </div>
+        </div>
+
+        <!-- Handlungsempfehlungen (Empowerment) -->
+        <div class="card" style="margin-bottom: 1.5rem; border-left: 3px solid #27ae60;">
+            <h2 style="color: #27ae60;">💡 Was Sie tun können</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 0.75rem;">
+                <div style="padding: 0.75rem; background: rgba(39,174,96,0.08); border-radius: 8px;">
+                    <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 0.25rem;">Energiemix diversifizieren</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">Wer auf mehrere Quellen setzt (Gas + Holz + Wärmepumpe), bleibt bei Preissprüngen flexibel.</div>
+                </div>
+                <div style="padding: 0.75rem; background: rgba(39,174,96,0.08); border-radius: 8px;">
+                    <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 0.25rem;">Heizverhalten prüfen</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">1°C weniger Raumtemperatur spart ca. 6% Heizenergie. Nachts: 16–17°C reichen.</div>
+                </div>
+                <div style="padding: 0.75rem; background: rgba(39,174,96,0.08); border-radius: 8px;">
+                    <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 0.25rem;">Tarife vergleichen</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">Gaspreise sind aktuell moderat – guter Zeitpunkt für Festpreisverträge.</div>
+                </div>
+            </div>
+        </div>
+
+        </div><!-- /section Heizkosten -->
 
         <!-- Footer -->
         <div class="footer">
@@ -1224,7 +1397,10 @@
                 <strong>Datenquellen:</strong>
                 <a href="https://agsi.gie.eu/" target="_blank" rel="noopener">GIE AGSI</a> (Speicherdaten) |
                 <a href="https://www.bundesnetzagentur.de/" target="_blank" rel="noopener">Bundesnetzagentur</a> (Importdaten) |
-                <a href="https://www.theice.com/products/27996665/Dutch-TTF-Gas-Futures" target="_blank" rel="noopener">ICE</a> (Gaspreis)
+                <a href="https://www.theice.com/products/27996665/Dutch-TTF-Gas-Futures" target="_blank" rel="noopener">ICE</a> (Gaspreis) |
+                <a href="https://energy-charts.info/" target="_blank" rel="noopener">Energy-Charts</a> (Strompreis) |
+                <a href="https://depi.de/pelletpreis" target="_blank" rel="noopener">DEPI</a> (Pelletpreis) |
+                <a href="https://www.tecson.de/" target="_blank" rel="noopener">tecson</a> (Heizöl)
             </div>
             <div class="footer-legal">
                 <strong>Impressum:</strong> Privates, nicht-kommerzielles Projekt zur Visualisierung öffentlicher Energiedaten. Kontakt: <a href="mailto:hello@energienotfall.de">hello@energienotfall.de</a><br>
