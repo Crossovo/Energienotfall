@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan-B-Check – Wie resilient ist Ihre Energieversorgung?</title>
     <meta name="description" content="8 Fragen, 3 Minuten: Prüfen Sie, wie gut Sie auf einen Energieengpass vorbereitet sind.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Plan-B-Check – Wie krisenfest ist Ihre Energieversorgung?">
+    <meta property="og:description" content="8 Fragen, 3 Minuten: Testen Sie Ihre Energieresilienz für Haus, Betrieb oder Produktion.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://crossovo.github.io/Energienotfall/fragebogen.html">
+    <meta property="og:image" content="https://crossovo.github.io/Energienotfall/og-planb.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plan-B-Check – Wie krisenfest ist Ihre Energieversorgung?">
+    <meta name="twitter:description" content="8 Fragen, 3 Minuten: Testen Sie Ihre Energieresilienz.">
+    <meta name="twitter:image" content="https://crossovo.github.io/Energienotfall/og-planb.png">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -344,6 +361,40 @@
         }
         .btn-restart:hover { border-color: #555; color: #ccc; }
 
+        /* Share */
+        .share-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.15s, opacity 0.15s;
+        }
+        .share-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+        .share-btn.wa { background: #25D366; }
+        .share-btn.tw { background: #1DA1F2; }
+        .share-btn.li { background: #0A66C2; }
+        .share-btn.dl { background: #555; }
+        .share-label {
+            font-size: 0.7rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
         /* Footer link */
         .back-link {
             text-align: center;
@@ -407,6 +458,15 @@
                 <h3>Ihre Schwachstellen</h3>
                 <div id="weaknessItems"></div>
             </div>
+            <div class="share-label">Ergebnis teilen</div>
+            <div class="share-row" id="shareRow">
+                <a class="share-btn wa" id="shareWA" target="_blank" rel="noopener">WhatsApp</a>
+                <a class="share-btn tw" id="shareTW" target="_blank" rel="noopener">X / Twitter</a>
+                <a class="share-btn li" id="shareLI" target="_blank" rel="noopener">LinkedIn</a>
+                <button class="share-btn dl" id="shareDL" onclick="downloadScoreImage()">Bild speichern</button>
+            </div>
+            <canvas id="shareCanvas" width="1200" height="630" style="display:none;"></canvas>
+
             <div class="result-cta">
                 <a href="index.html">Aktuelle Versorgungslage ansehen</a>
                 <div class="sub">Gasspeicher, Preise & Prognosen auf energienotfall.de</div>
@@ -862,6 +922,21 @@ function showResult() {
             </div>
         `).join('');
     }
+
+    // ── Share links ──
+    const segLabels = { haus: 'Haushalt', betrieb: 'Betrieb', produktion: 'Produktion' };
+    const shareText = `Mein Energienotfall-Score: ${score}/100 (${segLabels[segment] || 'Haushalt'}). Wie krisenfest bist du?`;
+    const shareUrl = 'https://crossovo.github.io/Energienotfall/fragebogen.html';
+
+    document.getElementById('shareWA').href =
+        `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
+    document.getElementById('shareTW').href =
+        `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+    document.getElementById('shareLI').href =
+        `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+
+    // Generate share image
+    renderShareCanvas(score, color, segLabels[segment] || 'Haushalt', weaknesses.length);
 }
 
 // ── Segment-adaptive recommendations ──
@@ -913,6 +988,90 @@ function getRecommendation(qId, value) {
     const seg = r[segment] || r['haus'];
     const qRecs = seg[qId] || {};
     return qRecs[value] || 'Hier besteht Optimierungspotential — prüfen Sie Alternativen.';
+}
+
+// ── Share image generation ──
+function renderShareCanvas(score, color, segLabel, weakCount) {
+    const c = document.getElementById('shareCanvas');
+    const ctx = c.getContext('2d');
+    const W = 1200, H = 630;
+
+    // Background
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle border
+    ctx.strokeStyle = '#222';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1, 1, W - 2, H - 2);
+
+    // Score ring
+    const cx = 300, cy = H / 2, r = 120;
+    ctx.lineWidth = 14;
+    ctx.lineCap = 'round';
+    // Background ring
+    ctx.strokeStyle = '#222';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    // Score arc
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + (score / 100) * Math.PI * 2);
+    ctx.stroke();
+
+    // Score number
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 72px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(score, cx, cy - 10);
+    ctx.font = '20px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillStyle = '#888';
+    ctx.fillText('von 100', cx, cy + 35);
+
+    // Right side text
+    const tx = 520;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#f39c12';
+    ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillText('Plan-B-Check', tx, 160);
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 40px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillText(`${segLabel}`, tx, 220);
+
+    // Status line
+    let statusText, statusColor;
+    if (score >= 70) { statusText = 'Gut aufgestellt'; statusColor = '#27ae60'; }
+    else if (score >= 40) { statusText = 'Verwundbar'; statusColor = '#f39c12'; }
+    else { statusText = 'Hochriskant'; statusColor = '#e74c3c'; }
+
+    ctx.fillStyle = statusColor;
+    ctx.font = 'bold 30px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillText(statusText, tx, 290);
+
+    if (weakCount > 0) {
+        ctx.fillStyle = '#888';
+        ctx.font = '22px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillText(`${weakCount} Schwachstelle${weakCount > 1 ? 'n' : ''} identifiziert`, tx, 340);
+    }
+
+    // Bottom bar
+    ctx.fillStyle = '#161616';
+    ctx.fillRect(0, H - 70, W, 70);
+    ctx.fillStyle = '#666';
+    ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('energienotfall.de/fragebogen', W / 2, H - 30);
+}
+
+function downloadScoreImage() {
+    const c = document.getElementById('shareCanvas');
+    const link = document.createElement('a');
+    link.download = 'plan-b-check-ergebnis.png';
+    link.href = c.toDataURL('image/png');
+    link.click();
 }
 
 function animateNumber(elementId, start, end, duration) {
