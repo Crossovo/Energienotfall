@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan-B-Check – Wie resilient ist Ihre Energieversorgung?</title>
+    <meta name="description" content="8 Fragen, 3 Minuten: Prüfen Sie, wie gut Sie auf einen Energieengpass vorbereitet sind.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 640px;
+            width: 100%;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 1.5rem 0 1rem;
+        }
+        .header h1 {
+            font-size: 1.4rem;
+            color: #f39c12;
+            margin-bottom: 0.25rem;
+        }
+        .header p {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Progress */
+        .progress-wrap {
+            margin-bottom: 2rem;
+        }
+        .progress-bar {
+            height: 4px;
+            background: #1a1a2e;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+        .progress-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.4rem;
+            text-align: right;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .question-card.slide-out {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        .question-card.slide-in {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .q-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.75rem;
+        }
+        .q-number {
+            font-size: 0.8rem;
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+        .q-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        .q-hint {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Answer Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: auto;
+        }
+        .option-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #1a1a2e;
+            border: 1px solid #2a2a3e;
+            border-radius: 8px;
+            padding: 0.9rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .option-btn:hover {
+            border-color: #f39c12;
+            background: rgba(243, 156, 18, 0.08);
+            color: #fff;
+        }
+        .option-btn.selected {
+            border-color: #f39c12;
+            background: rgba(243, 156, 18, 0.15);
+            color: #fff;
+        }
+        .option-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            width: 2rem;
+            text-align: center;
+        }
+        .option-label {
+            font-weight: 500;
+        }
+        .option-desc {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.15rem;
+        }
+        .option-btn.selected .option-desc { color: #aaa; }
+
+        /* Navigation */
+        .nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+        }
+        .btn-back {
+            background: none;
+            border: 1px solid #333;
+            color: #888;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .btn-back:hover { border-color: #555; color: #ccc; }
+        .btn-back:disabled { opacity: 0.3; cursor: default; }
+
+        /* Intro screen */
+        .intro {
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .intro-icon { font-size: 3.5rem; }
+        .intro h2 {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .intro p {
+            color: #999;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .btn-start {
+            display: inline-block;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.85rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.3);
+        }
+
+        /* Result screen */
+        .result { display: none; flex-direction: column; gap: 1.5rem; }
+        .result.active { display: flex; }
+
+        .score-ring {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .score-ring svg {
+            transform: rotate(-90deg);
+            width: 180px;
+            height: 180px;
+        }
+        .score-ring .bg {
+            fill: none;
+            stroke: #1a1a2e;
+            stroke-width: 10;
+        }
+        .score-ring .fg {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 502;
+            stroke-dashoffset: 502;
+            transition: stroke-dashoffset 1.5s ease, stroke 0.5s ease;
+        }
+        .score-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .score-value .num {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+        .score-value .of {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .score-label {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .weakness-list {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+        .weakness-list h3 {
+            font-size: 0.9rem;
+            color: #f39c12;
+            margin-bottom: 0.75rem;
+        }
+        .weakness-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1a1a2e;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .weakness-item:last-child { border-bottom: none; }
+        .weakness-item .wi-icon { flex-shrink: 0; font-size: 1rem; }
+        .weakness-item .wi-cat {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+
+        .result-cta {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .result-cta a {
+            display: inline-block;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .result-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.3);
+        }
+        .result-cta .sub {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .btn-restart {
+            background: none;
+            border: 1px solid #333;
+            color: #888;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin: 0 auto;
+            display: block;
+            transition: all 0.2s;
+        }
+        .btn-restart:hover { border-color: #555; color: #ccc; }
+
+        /* Footer link */
+        .back-link {
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.8rem;
+        }
+        .back-link a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link a:hover { color: #f39c12; }
+
+        @media (max-width: 480px) {
+            .container { padding: 1rem; }
+            .question-card { padding: 1.5rem 1rem; }
+            .q-text { font-size: 1.05rem; }
+            .option-btn { padding: 0.75rem 0.85rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Plan-B-Check</h1>
+            <p>Wie resilient ist Ihre Energieversorgung?</p>
+        </div>
+
+        <div class="progress-wrap" id="progressWrap" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-label" id="progressLabel"></div>
+        </div>
+
+        <!-- INTRO -->
+        <div class="question-card" id="intro">
+            <div class="intro">
+                <div class="intro-icon">🛡️</div>
+                <h2>Energie braucht einen Plan B</h2>
+                <p>8 Fragen. 3 Minuten. Sie erfahren, wie gut Sie auf einen Energieengpass vorbereitet sind — und wo Ihre Schwachstellen liegen.</p>
+                <div><button class="btn-start" onclick="startQuiz()">Jetzt prüfen</button></div>
+            </div>
+        </div>
+
+        <!-- QUESTIONS (rendered by JS) -->
+        <div class="question-card" id="questionCard" style="display:none;"></div>
+
+        <!-- RESULT -->
+        <div class="result" id="resultScreen">
+            <div class="score-ring">
+                <svg viewBox="0 0 180 180">
+                    <circle class="bg" cx="90" cy="90" r="80" />
+                    <circle class="fg" id="scoreArc" cx="90" cy="90" r="80" />
+                </svg>
+                <div class="score-value">
+                    <div class="num" id="scoreNum">0</div>
+                    <div class="of">von 100</div>
+                </div>
+            </div>
+            <div class="score-label" id="scoreLabel"></div>
+            <div class="weakness-list" id="weaknesses">
+                <h3>Ihre Schwachstellen</h3>
+                <div id="weaknessItems"></div>
+            </div>
+            <div class="result-cta">
+                <a href="index.html">Aktuelle Versorgungslage ansehen</a>
+                <div class="sub">Gasspeicher, Preise & Prognosen auf energienotfall.de</div>
+            </div>
+            <button class="btn-restart" onclick="restart()">Erneut prüfen</button>
+        </div>
+
+        <div class="back-link"><a href="index.html">← energienotfall.de</a></div>
+    </div>
+
+<script>
+// ── Question definitions with per-segment overrides ──
+const questions = [
+    {
+        id: 'segment',
+        category: '',
+        num: 1,
+        text: 'Wofür prüfen Sie?',
+        hint: 'Ihre Auswahl bestimmt den Kontext der folgenden Fragen.',
+        options: [
+            { icon: '🏠', label: 'Eigenheim / Wohnung', desc: 'Private Heizung & Warmwasser', value: 'haus', points: 0 },
+            { icon: '🏢', label: 'Gewerbebetrieb', desc: 'Büro, Laden, Gaststätte, Handwerk', value: 'betrieb', points: 0 },
+            { icon: '🏭', label: 'Produktion / Industrie', desc: 'Prozesswärme, Fertigung, Logistik', value: 'produktion', points: 0 }
+        ]
+    },
+    {
+        id: 'hauptenergie',
+        category: 'Brennstoff',
+        ishikawa: 'brennstoff',
+        num: 2,
+        haus: {
+            text: 'Was ist Ihr Hauptenergieträger?',
+            hint: 'Der Energieträger, von dem Ihre Heizung am stärksten abhängt.',
+            options: [
+                { icon: '🔥', label: 'Erdgas', desc: 'Pipeline-Gas, netzgebunden', value: 'gas', points: 15 },
+                { icon: '⚡', label: 'Strom (Wärmepumpe)', desc: 'Netzgebunden, stromabhängig', value: 'strom', points: 10 },
+                { icon: '🛢️', label: 'Heizöl', desc: 'Tank im Keller, lagerfähig', value: 'oel', points: 5 },
+                { icon: '🪵', label: 'Holz / Pellets', desc: 'Lagerfähig, regional verfügbar', value: 'holz', points: 0 },
+                { icon: '🌡️', label: 'Fernwärme', desc: 'Netzgebunden, kein eigener Speicher', value: 'fernwaerme', points: 12 }
+            ]
+        },
+        betrieb: {
+            text: 'Wovon hängt Ihr Betrieb energetisch ab?',
+            hint: 'Strom für IT, Kasse, Kühlung — Gas für Küche, Heizung. Was darf nicht ausfallen?',
+            options: [
+                { icon: '⚡', label: 'Strom ist alles', desc: 'IT, Kasse, Kühlung, Licht — ohne Strom steht der Laden', value: 'strom', points: 15 },
+                { icon: '🔥', label: 'Gas ist kritisch', desc: 'Großküche, Backofen, Prozesswärme', value: 'gas', points: 15 },
+                { icon: '⚡🔥', label: 'Beides gleichwertig', desc: 'Strom UND Gas unverzichtbar', value: 'beides', points: 15 },
+                { icon: '🌡️', label: 'Fernwärme / Nahwärme', desc: 'Heizung extern, Strom für den Rest', value: 'fernwaerme', points: 10 }
+            ]
+        },
+        produktion: {
+            text: 'Welcher Energieträger treibt Ihre Produktion?',
+            hint: 'Prozesswärme, Druckluft, Antriebe — wo sitzt die größte Abhängigkeit?',
+            options: [
+                { icon: '🔥', label: 'Erdgas (Prozesswärme)', desc: 'Schmelzen, Trocknen, Dampf — gasabhängig', value: 'gas', points: 15 },
+                { icon: '⚡', label: 'Strom (Antriebe, Druckluft)', desc: 'Motoren, Kompressoren, Steuerung', value: 'strom', points: 15 },
+                { icon: '♨️', label: 'Dampf / Fernwärme', desc: 'Extern bezogen, kein eigener Kessel', value: 'fernwaerme', points: 12 },
+                { icon: '🔄', label: 'Mehrere gleichwertig', desc: 'Gas + Strom + ggf. Dampf im Mix', value: 'beides', points: 10 }
+            ]
+        }
+    },
+    {
+        id: 'diversifikation',
+        category: 'Brennstoff',
+        ishikawa: 'brennstoff',
+        num: 3,
+        haus: {
+            text: 'Haben Sie einen zweiten Energieträger?',
+            hint: 'Z.B. Kaminofen, Solarthermie, Infrarotheizung als Ergänzung.',
+            options: [
+                { icon: '🚫', label: 'Nein, nur eine Quelle', desc: 'Kompletter Ausfall bei Störung', value: 'nein', points: 15 },
+                { icon: '🔄', label: 'Ja, als Ergänzung', desc: 'Deckt Teilbedarf, z.B. Kaminofen', value: 'ergaenzung', points: 5 },
+                { icon: '✅', label: 'Ja, voll umschaltbar', desc: 'Kann Hauptquelle komplett ersetzen', value: 'voll', points: 0 }
+            ]
+        },
+        betrieb: {
+            text: 'Gibt es eine Backup-Versorgung für den Betrieb?',
+            hint: 'Notstrom für Kasse und Kühlung? Zweiter Energieträger für Kernprozesse?',
+            options: [
+                { icon: '🚫', label: 'Nein, kein Backup', desc: 'Ausfall = Betriebsstillstand', value: 'nein', points: 15 },
+                { icon: '🔋', label: 'Notstrom für das Nötigste', desc: 'USV für Kasse, Server oder Kühlung', value: 'ergaenzung', points: 7 },
+                { icon: '✅', label: 'Ja, Vollbetrieb abgesichert', desc: 'Generator oder zweite Quelle für alle Kernprozesse', value: 'voll', points: 0 }
+            ]
+        },
+        produktion: {
+            text: 'Gibt es Dual-Fuel oder Ausweichkapazität?',
+            hint: 'Können Sie bei Gasrationierung auf einen anderen Brennstoff umschalten?',
+            options: [
+                { icon: '🚫', label: 'Nein — Totalausfall bei Engpass', desc: 'Kein Ersatzbrennstoff, keine Ausweichproduktion', value: 'nein', points: 15 },
+                { icon: '🔄', label: 'Teilbetrieb möglich', desc: 'Reduzierte Kapazität, kritische Linien laufen', value: 'ergaenzung', points: 7 },
+                { icon: '✅', label: 'Ja, Dual-Fuel oder Eigenerzeugung', desc: 'Umschaltbare Brenner, BHKW, PV + Speicher', value: 'voll', points: 0 }
+            ]
+        }
+    },
+    {
+        id: 'stromausfall',
+        category: 'Technik',
+        ishikawa: 'technik',
+        num: 4,
+        haus: {
+            text: 'Funktioniert Ihre Heizung ohne Strom?',
+            hint: 'Gasheizung, Wärmepumpe, Pelletkessel — fast alle brauchen Strom für Pumpen und Steuerung.',
+            options: [
+                { icon: '🔌', label: 'Nein, komplett stromabhängig', desc: 'Heizung fällt bei Stromausfall sofort aus', value: 'sofort', points: 15 },
+                { icon: '🔋', label: 'Teilweise — Batterie/USV vorhanden', desc: 'Überbrückt einige Stunden', value: 'stunden', points: 7 },
+                { icon: '🏕️', label: 'Ja, autark möglich', desc: 'Kaminofen, Holzherd oder ähnlich', value: 'autark', points: 0 }
+            ]
+        },
+        betrieb: {
+            text: 'Wie lange läuft Ihr Betrieb ohne Strom?',
+            hint: 'Kasse, Kühlung, IT, Beleuchtung — was geht sofort, was hat Puffer?',
+            options: [
+                { icon: '💀', label: 'Sofort Stillstand', desc: 'Kein Strom = kein Betrieb. Kasse tot, Kühlung aus, Tür zu.', value: 'sofort', points: 15 },
+                { icon: '🔋', label: 'Wenige Stunden (USV)', desc: 'Kasse und Server laufen, aber Kühlung und Licht fallen aus', value: 'stunden', points: 7 },
+                { icon: '⛽', label: 'Halber Tag oder mehr', desc: 'Notstromaggregat oder Batteriespeicher vorhanden', value: 'autark', points: 0 }
+            ]
+        },
+        produktion: {
+            text: 'Was passiert bei 4 Stunden Stromausfall?',
+            hint: 'Erstarrte Schmelze, verlorene Chargen, beschädigte Anlagen — oder kontrolliertes Herunterfahren?',
+            options: [
+                { icon: '💀', label: 'Totalschaden möglich', desc: 'Schmelze erstarrt, Charge verloren, Anlage beschädigt', value: 'sofort', points: 15 },
+                { icon: '⏸️', label: 'Produktionsstopp, kein Schaden', desc: 'Maschinen stehen, aber kein irreversibler Schaden', value: 'stunden', points: 7 },
+                { icon: '⚡', label: 'Notstrom sichert kritische Prozesse', desc: 'Generator/USV für Steuerung und Kernanlagen', value: 'autark', points: 0 }
+            ]
+        }
+    },
+    {
+        id: 'vorrat',
+        category: 'Prozess',
+        ishikawa: 'prozess',
+        num: 5,
+        haus: {
+            text: 'Wie lange reicht Ihr Energievorrat?',
+            hint: 'Heizöltank, Holzlager, Pelletvorrat — oder gar keiner bei Gas/Strom.',
+            options: [
+                { icon: '⚠️', label: 'Kein Vorrat', desc: 'Netzgebunden — Versorgung endet sofort bei Ausfall', value: 'kein', points: 15 },
+                { icon: '📦', label: 'Wenige Tage', desc: 'Kleiner Holzvorrat oder Tank fast leer', value: 'tage', points: 8 },
+                { icon: '🏠', label: 'Mehrere Wochen', desc: 'Heizöltank voll, Holzlager gefüllt, Pellets gebunkert', value: 'wochen', points: 0 }
+            ]
+        },
+        betrieb: {
+            text: 'Wie lange hält Ihre Überbrückung?',
+            hint: 'USV-Akku, Diesel-Vorrat fürs Aggregat, Puffer für Kühlung.',
+            options: [
+                { icon: '⚠️', label: 'Keine Überbrückung', desc: 'Ausfall = sofort Umsatzverlust', value: 'kein', points: 15 },
+                { icon: '🔋', label: 'Wenige Stunden', desc: 'USV oder kleine Batterie überbrückt das Nötigste', value: 'tage', points: 8 },
+                { icon: '⛽', label: '1 Tag oder mehr', desc: 'Diesel-Generator mit Tankvorrat, Batterie-Speicher', value: 'wochen', points: 0 }
+            ]
+        },
+        produktion: {
+            text: 'Haben Sie Energiereserven für den Ernstfall?',
+            hint: 'Brennstofftanks, Eigenerzeuger, Dampfspeicher, Druckluftspeicher.',
+            options: [
+                { icon: '⚠️', label: 'Keine Reserven', desc: 'Just-in-Time — kein Puffer bei Lieferausfall', value: 'kein', points: 15 },
+                { icon: '📦', label: 'Notfall-Überbrückung', desc: 'Generator, kleiner Tank — Stunden bis 1 Tag', value: 'tage', points: 8 },
+                { icon: '🏭', label: 'Eigenerzeugung vorhanden', desc: 'BHKW, Öltank, PV + Speicher — Tage autark', value: 'wochen', points: 0 }
+            ]
+        }
+    },
+    {
+        id: 'wartung',
+        category: 'Management',
+        ishikawa: 'management',
+        num: 6,
+        haus: {
+            text: 'Wann wurde Ihre Heizung zuletzt gewartet?',
+            hint: 'Regelmäßige Wartung verhindert Ausfälle in der Heizsaison.',
+            options: [
+                { icon: '🕸️', label: 'Über 2 Jahre her', desc: 'Erhöhtes Ausfallrisiko mitten im Winter', value: 'alt', points: 10 },
+                { icon: '🔧', label: 'Innerhalb der letzten 12 Monate', desc: 'Im Rahmen der Empfehlung', value: 'ok', points: 3 },
+                { icon: '✅', label: 'Aktuell gewartet + Wartungsvertrag', desc: 'Notdienst-Garantie inklusive', value: 'aktuell', points: 0 }
+            ]
+        },
+        betrieb: {
+            text: 'Wie ist der Wartungsstand Ihrer kritischen Systeme?',
+            hint: 'Heizung, Kühlung, USV, Kassensystem, Brandschutz — alles aktuell?',
+            options: [
+                { icon: '🕸️', label: 'Überfällig oder unklar', desc: 'Kein Überblick, letzter Service lange her', value: 'alt', points: 10 },
+                { icon: '🔧', label: 'Regelmäßig, aber ohne Vertrag', desc: 'Wird gemacht, aber kein Notdienst garantiert', value: 'ok', points: 3 },
+                { icon: '✅', label: 'Wartungsverträge für alle Kernsysteme', desc: 'SLA mit Reaktionszeit, Notdienst 24/7', value: 'aktuell', points: 0 }
+            ]
+        },
+        produktion: {
+            text: 'Wie ist der Wartungsstand Ihrer Energieanlagen?',
+            hint: 'Kessel, Brenner, Kompressoren, Notstrom, Steuerungstechnik.',
+            options: [
+                { icon: '🕸️', label: 'Reaktiv — erst bei Ausfall', desc: 'Keine präventive Wartung, hohes Ausfallrisiko', value: 'alt', points: 10 },
+                { icon: '🔧', label: 'Planmäßig nach Intervall', desc: 'Wartungsplan vorhanden, wird eingehalten', value: 'ok', points: 3 },
+                { icon: '✅', label: 'Predictive + Redundanz', desc: 'Zustandsüberwachung, Ersatzteillager, Backup-Systeme', value: 'aktuell', points: 0 }
+            ]
+        }
+    },
+    {
+        id: 'notfallplan',
+        category: 'Mensch',
+        ishikawa: 'mensch',
+        num: 7,
+        haus: {
+            text: 'Wissen Sie, was bei Heizungsausfall zu tun ist?',
+            hint: 'Winter, Heizung fällt aus — kennen alle Bewohner die nächsten Schritte?',
+            options: [
+                { icon: '🤷', label: 'Nein, kein Plan', desc: 'Improvisieren und hoffen', value: 'nein', points: 10 },
+                { icon: '📝', label: 'Grob im Kopf', desc: 'Ungefähre Vorstellung, nichts dokumentiert', value: 'ansatz', points: 5 },
+                { icon: '📋', label: 'Ja, alle wissen Bescheid', desc: 'Notfall-Nummern, Ersatzheizung, Maßnahmen klar', value: 'ja', points: 0 }
+            ]
+        },
+        betrieb: {
+            text: 'Gibt es einen Notfallplan für Betriebsunterbrechung?',
+            hint: 'Wer entscheidet? Wer wird informiert? Wie geht es weiter, wenn Strom oder Gas ausfällt?',
+            options: [
+                { icon: '🤷', label: 'Nein — wir improvisieren', desc: 'Kein Plan, keine Zuständigkeiten definiert', value: 'nein', points: 10 },
+                { icon: '📝', label: 'Ansatzweise vorhanden', desc: 'Chef weiß Bescheid, aber nichts dokumentiert', value: 'ansatz', points: 5 },
+                { icon: '📋', label: 'Ja, dokumentiert mit Checkliste', desc: 'Verantwortliche benannt, Ablauf getestet, Nummern griffbereit', value: 'ja', points: 0 }
+            ]
+        },
+        produktion: {
+            text: 'Gibt es einen Business Continuity Plan?',
+            hint: 'Dokumentierter Notfallplan mit Eskalationsstufen, Verantwortlichen und Wiederanlaufprozedur?',
+            options: [
+                { icon: '🤷', label: 'Nein, kein BCP', desc: 'Kein dokumentierter Plan für Energieausfall', value: 'nein', points: 10 },
+                { icon: '📝', label: 'Teilweise — nicht getestet', desc: 'Plan existiert auf Papier, aber nie geübt', value: 'ansatz', points: 5 },
+                { icon: '📋', label: 'Ja, getestet und aktuell', desc: 'BCP mit Eskalation, Übungen, Wiederanlauf dokumentiert', value: 'ja', points: 0 }
+            ]
+        }
+    },
+    {
+        id: 'vertrag',
+        category: 'Umfeld',
+        ishikawa: 'umfeld',
+        num: 8,
+        haus: {
+            text: 'Wie flexibel ist Ihr Energievertrag?',
+            hint: 'Langfristbindung = günstig, aber kein schneller Wechsel bei Preissprung.',
+            options: [
+                { icon: '🔒', label: 'Ein Anbieter, Langzeitvertrag', desc: 'Gebunden, kein schneller Wechsel möglich', value: 'gebunden', points: 10 },
+                { icon: '🔓', label: 'Mittelfristig, wechselbar', desc: 'Vertrag mit angemessener Kündigungsfrist', value: 'mittel', points: 4 },
+                { icon: '🆓', label: 'Flexibel, mehrere Optionen', desc: 'Kurze Bindung oder mehrere Energiequellen', value: 'flexibel', points: 0 }
+            ]
+        },
+        betrieb: {
+            text: 'Wie abgesichert sind Sie vertraglich?',
+            hint: 'Energievertrag, Versicherung gegen Betriebsunterbrechung, Lieferantenverträge.',
+            options: [
+                { icon: '🔒', label: 'Ein Versorger, keine BU-Versicherung', desc: 'Gebunden + unversichert bei Ausfall', value: 'gebunden', points: 10 },
+                { icon: '🔓', label: 'Wechselbar, Basis-Versicherung', desc: 'Vertrag flexibel, Grundschutz vorhanden', value: 'mittel', points: 4 },
+                { icon: '🆓', label: 'Diversifiziert + BU-versichert', desc: 'Mehrere Lieferanten, Betriebsunterbrechung abgedeckt', value: 'flexibel', points: 0 }
+            ]
+        },
+        produktion: {
+            text: 'Wie sind Energieverträge und Lieferketten abgesichert?',
+            hint: 'Energiebezug, Zulieferer-Abhängigkeiten, Versicherungsschutz für Produktionsausfall.',
+            options: [
+                { icon: '🔒', label: 'Single Source, keine Ausfallversicherung', desc: 'Ein Versorger, ein Zulieferer — kein Netz', value: 'gebunden', points: 10 },
+                { icon: '🔓', label: 'Teilweise diversifiziert', desc: 'Zweitlieferant möglich, Basisversicherung', value: 'mittel', points: 4 },
+                { icon: '🆓', label: 'Voll diversifiziert + versichert', desc: 'Multi-Sourcing, Ausfallversicherung, Rahmenverträge', value: 'flexibel', points: 0 }
+            ]
+        }
+    }
+];
+
+// Max possible risk points (worst answers across all questions excl. segment)
+const MAX_POINTS = 15 + 15 + 15 + 15 + 10 + 10 + 10; // 90
+
+let currentStep = -1;
+let answers = {};    // { questionId: optionIndex }
+let answerValues = {}; // { questionId: optionValue } — for recommendations
+let segment = 'haus';
+
+function getQ(q) {
+    // Return segment-specific version merged with base
+    const s = q[segment] || q['haus'] || {};
+    return {
+        id: q.id,
+        category: q.category || '',
+        ishikawa: q.ishikawa || '',
+        num: q.num,
+        text: s.text || q.text,
+        hint: s.hint || q.hint,
+        options: s.options || q.options
+    };
+}
+
+function startQuiz() {
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('progressWrap').style.display = 'block';
+    currentStep = 0;
+    renderQuestion();
+}
+
+function renderQuestion() {
+    const card = document.getElementById('questionCard');
+    const q = getQ(questions[currentStep]);
+
+    card.classList.add('slide-out');
+
+    setTimeout(() => {
+        card.style.display = 'flex';
+
+        let html = '';
+        if (q.category) html += `<div class="q-category">${q.category}</div>`;
+        html += `<div class="q-number">Frage ${q.num} von ${questions.length}</div>`;
+        html += `<div class="q-text">${q.text}</div>`;
+        html += `<div class="q-hint">${q.hint}</div>`;
+        html += `<div class="options">`;
+
+        q.options.forEach((opt, i) => {
+            const selected = answers[q.id] === i ? ' selected' : '';
+            html += `
+                <div class="option-btn${selected}" onclick="selectOption(${i})">
+                    <div class="option-icon">${opt.icon}</div>
+                    <div>
+                        <div class="option-label">${opt.label}</div>
+                        <div class="option-desc">${opt.desc}</div>
+                    </div>
+                </div>`;
+        });
+        html += `</div>`;
+
+        html += `<div class="nav-row">`;
+        html += `<button class="btn-back" ${currentStep === 0 ? 'disabled' : ''} onclick="goBack()">← Zurück</button>`;
+        html += `<div></div>`;
+        html += `</div>`;
+
+        card.innerHTML = html;
+
+        const pct = ((currentStep + 1) / questions.length) * 100;
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressLabel').textContent = `${currentStep + 1} / ${questions.length}`;
+
+        card.classList.remove('slide-out');
+        card.classList.add('slide-in');
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                card.classList.remove('slide-in');
+            });
+        });
+    }, 200);
+}
+
+function selectOption(index) {
+    const raw = questions[currentStep];
+    const q = getQ(raw);
+    answers[q.id] = index;
+    answerValues[q.id] = q.options[index].value;
+
+    if (q.id === 'segment') {
+        segment = q.options[index].value;
+        // Clear subsequent answers — segment changed, questions differ
+        questions.forEach((qq, i) => {
+            if (i > currentStep) { delete answers[qq.id]; delete answerValues[qq.id]; }
+        });
+    }
+
+    const btns = document.querySelectorAll('.option-btn');
+    btns.forEach((b, i) => b.classList.toggle('selected', i === index));
+
+    setTimeout(() => {
+        if (currentStep < questions.length - 1) {
+            currentStep++;
+            renderQuestion();
+        } else {
+            showResult();
+        }
+    }, 300);
+}
+
+function goBack() {
+    if (currentStep > 0) {
+        currentStep--;
+        renderQuestion();
+    }
+}
+
+function showResult() {
+    document.getElementById('questionCard').style.display = 'none';
+    document.getElementById('progressWrap').style.display = 'none';
+
+    let riskPoints = 0;
+    let weaknesses = [];
+
+    questions.forEach(raw => {
+        if (raw.id === 'segment') return;
+        const q = getQ(raw);
+        const idx = answers[q.id];
+        if (idx !== undefined) {
+            const opt = q.options[idx];
+            riskPoints += opt.points;
+            if (opt.points >= 10) {
+                weaknesses.push({
+                    category: q.category,
+                    ishikawa: q.ishikawa,
+                    recommendation: getRecommendation(q.id, opt.value)
+                });
+            }
+        }
+    });
+
+    const multiplier = segment === 'produktion' ? 1.2 : segment === 'betrieb' ? 1.1 : 1.0;
+    const adjustedRisk = Math.min(riskPoints * multiplier, MAX_POINTS);
+    const score = Math.round(100 - (adjustedRisk / MAX_POINTS) * 100);
+
+    const resultScreen = document.getElementById('resultScreen');
+    resultScreen.classList.add('active');
+
+    const arc = document.getElementById('scoreArc');
+    const circumference = 2 * Math.PI * 80;
+    const offset = circumference - (score / 100) * circumference;
+
+    let color;
+    if (score >= 70) color = '#27ae60';
+    else if (score >= 40) color = '#f39c12';
+    else color = '#e74c3c';
+
+    setTimeout(() => {
+        arc.style.stroke = color;
+        arc.style.strokeDashoffset = offset;
+    }, 100);
+
+    animateNumber('scoreNum', 0, score, 1200);
+
+    const label = document.getElementById('scoreLabel');
+    if (score >= 80) {
+        label.textContent = '🛡️ Gut aufgestellt — geringe Verwundbarkeit';
+        label.style.background = 'rgba(39, 174, 96, 0.15)';
+        label.style.color = '#27ae60';
+    } else if (score >= 60) {
+        label.textContent = '⚡ Teilweise resilient — Optimierungspotential';
+        label.style.background = 'rgba(243, 156, 18, 0.15)';
+        label.style.color = '#f39c12';
+    } else if (score >= 40) {
+        label.textContent = '⚠️ Verwundbar — handeln Sie jetzt';
+        label.style.background = 'rgba(243, 156, 18, 0.2)';
+        label.style.color = '#e67e22';
+    } else {
+        label.textContent = '🚨 Hochriskant — kein Plan B vorhanden';
+        label.style.background = 'rgba(231, 76, 60, 0.15)';
+        label.style.color = '#e74c3c';
+    }
+
+    const container = document.getElementById('weaknessItems');
+    if (weaknesses.length === 0) {
+        container.innerHTML = '<div style="color:#27ae60; padding:0.5rem 0; font-size:0.9rem;">Keine kritischen Schwachstellen identifiziert.</div>';
+    } else {
+        container.innerHTML = weaknesses.map(w => `
+            <div class="weakness-item">
+                <div class="wi-icon">⚠️</div>
+                <div>
+                    <div>${w.recommendation}</div>
+                    <div class="wi-cat">${w.category}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+// ── Segment-adaptive recommendations ──
+function getRecommendation(qId, value) {
+    const r = {
+        haus: {
+            hauptenergie: {
+                gas: 'Erdgas ist netzgebunden und importabhängig. Ein Kaminofen oder Pelletofen als Backup reduziert Ihr Risiko erheblich.',
+                strom: 'Ihre Wärmepumpe braucht Strom. Bei Netzausfall: keine Heizung. Prüfen Sie Notstrom oder einen wasserführenden Kaminofen.',
+                fernwaerme: 'Fernwärme gibt Ihnen keine Kontrolle über die Quelle. Ein unabhängiger Zweitheizer schafft Sicherheit.',
+                oel: 'Heizöl ist lagerfähig — aber importabhängig und preisvolatil. Tank regelmäßig füllen und Zweitheizer prüfen.'
+            },
+            diversifikation: { nein: 'Nur eine Energiequelle = maximales Klumpenrisiko. Schon ein Kaminofen als Zweitheizer senkt die Verwundbarkeit deutlich.' },
+            stromausfall: { sofort: 'Ihre Heizung fällt bei Stromausfall sofort aus. Eine USV oder ein netzunabhängiger Ofen schafft Überbrückung.' },
+            vorrat: { kein: 'Ohne Energievorrat sind Sie sofort betroffen. Prüfen Sie, ob ein Brennstofflager (Holz, Pellets, Heizöl) möglich ist.' },
+            wartung: { alt: 'Überfällige Wartung erhöht das Ausfallrisiko im Winter. Ein Wartungsvertrag mit Notdienst-Garantie gibt Sicherheit.' },
+            notfallplan: { nein: 'Kein Plan bedeutet Chaos im Ernstfall. Halten Sie fest: Wer tut was, wenn die Heizung im Winter ausfällt?' },
+            vertrag: { gebunden: 'Langfristbindung an einen Anbieter macht Sie unflexibel. Prüfen Sie Wechseloptionen oder eine zweite Energiequelle.' }
+        },
+        betrieb: {
+            hauptenergie: {
+                strom: 'Ihr Betrieb hängt komplett am Stromnetz — Kasse, Kühlung, IT. Ein Notstromaggregat sichert den Grundbetrieb bei Ausfall.',
+                gas: 'Gasausfall = Küche kalt, Heizung aus. Prüfen Sie Elektro-Backup für kritische Prozesse (Induktion, Infrarot).',
+                beides: 'Doppelte Abhängigkeit von Strom UND Gas. Priorisieren Sie: Was muss zuerst laufen? Sichern Sie diesen Prozess ab.',
+                fernwaerme: 'Fernwärme fällt selten aus, aber Sie haben null Kontrolle. Für Strom-Ausfälle: USV oder Generator prüfen.'
+            },
+            diversifikation: { nein: 'Kein Backup = sofort Umsatzverlust bei Ausfall. Ein mobiles Notstromaggregat kann den Unterschied machen.' },
+            stromausfall: { sofort: 'Strom weg = Laden dicht. Prüfen Sie eine USV für Kasse und Kühlung, ggf. einen Dieselgenerator für längere Ausfälle.' },
+            vorrat: { kein: 'Keine Überbrückung bedeutet: jede Minute Ausfall kostet Umsatz. Schon eine USV für 2–4 Stunden schützt das Kerngeschäft.' },
+            wartung: { alt: 'Ungewartete Systeme fallen im schlechtesten Moment aus. Wartungsverträge mit SLA und Notdienst sind Pflicht für den Betrieb.' },
+            notfallplan: { nein: 'Ohne Notfallplan entscheidet niemand — oder alle gleichzeitig. Definieren Sie: Wer ruft wen an? Was wird zuerst gesichert?' },
+            vertrag: { gebunden: 'Ein Versorger, keine Betriebsunterbrechungsversicherung — maximales Risiko. BU-Versicherung und Zweitversorger prüfen.' }
+        },
+        produktion: {
+            hauptenergie: {
+                gas: 'Prozesswärme aus Gas — bei Rationierung wird Industrie zuerst abgeschaltet. Dual-Fuel-Brenner oder Alternativquelle prüfen.',
+                strom: 'Stromabhängige Produktion — bei Netzinstabilität droht Totalausfall. Eigenerzeugung (BHKW, PV + Speicher) schafft Unabhängigkeit.',
+                beides: 'Mehrfach-Abhängigkeit mindert das Risiko — aber nur wenn Ausfälle unkorreliert sind. Prüfen Sie gemeinsame Schwachstellen.',
+                fernwaerme: 'Extern bezogener Dampf/Wärme: Prüfen Sie Vertragsgarantien und Backup-Kessel für Engpasssituationen.'
+            },
+            diversifikation: { nein: 'Kein Ausweich-Brennstoff = Produktionsstopp bei Rationierung. Dual-Fuel-Nachrüstung oder mobile Kessel als Reserve prüfen.' },
+            stromausfall: { sofort: 'Totalschaden bei Stromausfall — das ist inakzeptables Risiko. USV für Steuerung + Generator für Kernanlagen sind zwingend.' },
+            vorrat: { kein: 'Just-in-Time ohne Puffer = maximale Verwundbarkeit. Eigenerzeugung (BHKW) oder Brennstoffreserve reduziert das Risiko.' },
+            wartung: { alt: 'Reaktive Wartung bei Produktionsanlagen ist russisches Roulette. Predictive Maintenance und Ersatzteillager einführen.' },
+            notfallplan: { nein: 'Ohne BCP droht bei Energieausfall Chaos mit Folgeschäden. Eskalationsstufen, Verantwortliche und Wiederanlauf definieren.' },
+            vertrag: { gebunden: 'Single-Source ohne Ausfallversicherung gefährdet die Existenz. Multi-Sourcing, Rahmenverträge und Produktionsausfallversicherung prüfen.' }
+        }
+    };
+    const seg = r[segment] || r['haus'];
+    const qRecs = seg[qId] || {};
+    return qRecs[value] || 'Hier besteht Optimierungspotential — prüfen Sie Alternativen.';
+}
+
+function animateNumber(elementId, start, end, duration) {
+    const el = document.getElementById(elementId);
+    const startTime = performance.now();
+    function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(start + (end - start) * eased);
+        if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+}
+
+function restart() {
+    answers = {};
+    answerValues = {};
+    segment = 'haus';
+    currentStep = -1;
+    document.getElementById('resultScreen').classList.remove('active');
+    document.getElementById('scoreArc').style.strokeDashoffset = 502;
+    document.getElementById('intro').style.display = 'flex';
+    document.getElementById('progressWrap').style.display = 'none';
+}
+</script>
+</body>
+</html>
