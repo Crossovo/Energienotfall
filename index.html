@@ -602,6 +602,25 @@
             .status-gauge-row {
                 flex-direction: column;
             }
+            .risk-matrix-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -0.5rem;
+                padding: 0 0.5rem;
+            }
+            .risk-matrix {
+                min-width: 520px;
+                font-size: 0.7rem;
+                grid-template-columns: 100px repeat(5, 1fr);
+            }
+            .risk-header {
+                padding: 0.4rem 0.3rem;
+                font-size: 0.65rem;
+            }
+            .risk-cell {
+                padding: 0.35rem 0.2rem;
+                font-size: 0.7rem;
+            }
         }
 
         /* Einzelspeicher Matrix */
@@ -1441,6 +1460,7 @@
         <div class="card" style="margin-bottom: 1.5rem;">
             <h2>Risikoprofil: Wie krisenfest ist Ihr Energieträger?</h2>
             <div style="font-size: 0.8rem; color: #888; margin-bottom: 1rem;">Nicht nur der Preis zählt – sondern ob Ihre Heizung auch in der Krise läuft.</div>
+            <div class="risk-matrix-wrap">
             <div class="risk-matrix">
                 <!-- Header -->
                 <div class="risk-header row-label"></div>
@@ -1498,6 +1518,7 @@
                 <div class="risk-cell"><span class="risk-score high">4/5</span></div>
                 <div class="risk-cell"><span class="risk-score medium">3/5</span></div>
             </div>
+            </div><!-- /risk-matrix-wrap -->
             <div style="margin-top: 1rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">
                 <strong style="color: #f39c12;">Erkenntnis:</strong> Gas und Strom sind günstig im Normalbetrieb – aber bei Netzausfall oder Lieferengpass stehen Sie ohne Wärme da. Holz und Pellets funktionieren unabhängig vom Netz und von Importen.
             </div>
