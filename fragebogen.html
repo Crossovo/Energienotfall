@@ -5,22 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan-B-Check – Wie resilient ist Ihre Energieversorgung?</title>
     <meta name="description" content="8 Fragen, 3 Minuten: Prüfen Sie, wie gut Sie auf einen Energieengpass vorbereitet sind.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.energienotfall.de/fragebogen.html">
+    <link rel="alternate" hreflang="de" href="https://www.energienotfall.de/fragebogen.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.energienotfall.de/fragebogen.html">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Plan-B-Check – Wie krisenfest ist Ihre Energieversorgung?">
     <meta property="og:description" content="8 Fragen, 3 Minuten: Testen Sie Ihre Energieresilienz für Haus, Betrieb oder Produktion.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://crossovo.github.io/Energienotfall/fragebogen.html">
-    <meta property="og:image" content="https://crossovo.github.io/Energienotfall/og-planb.png">
+    <meta property="og:url" content="https://www.energienotfall.de/fragebogen.html">
+    <meta property="og:image" content="https://www.energienotfall.de/og-planb.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="energienotfall.de">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Plan-B-Check – Wie krisenfest ist Ihre Energieversorgung?">
     <meta name="twitter:description" content="8 Fragen, 3 Minuten: Testen Sie Ihre Energieresilienz.">
-    <meta name="twitter:image" content="https://crossovo.github.io/Energienotfall/og-planb.png">
+    <meta name="twitter:image" content="https://www.energienotfall.de/og-planb.png">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -926,7 +931,7 @@ function showResult() {
     // ── Share links ──
     const segLabels = { haus: 'Haushalt', betrieb: 'Betrieb', produktion: 'Produktion' };
     const shareText = `Mein Energienotfall-Score: ${score}/100 (${segLabels[segment] || 'Haushalt'}). Wie krisenfest bist du?`;
-    const shareUrl = 'https://crossovo.github.io/Energienotfall/fragebogen.html';
+    const shareUrl = 'https://www.energienotfall.de/fragebogen.html';
 
     document.getElementById('shareWA').href =
         `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
