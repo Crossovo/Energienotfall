@@ -63,9 +63,9 @@
 <span>Trend -0.59%/Tag</span>
 <span style="color: #4fc3f7;">Ø historisch (Feb): 47%</span>
 </div>
-<!-- Gauge + Status Row (Gauge zuerst = visueller Anker vor Alarm-Text) -->
+<!-- Gauge + Kennzahlen (nebeneinander) -->
 <div class="status-gauge-row" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: stretch;">
-<div class="card" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<div class="card" style="flex: 0 0 auto; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
 <svg viewBox="0 0 300 190" width="280" height="178" xmlns="http://www.w3.org/2000/svg">
 <path d="M45.0,130.0 A105,105 0 1,1 255.0,130.0" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="24" opacity="1"/>
 <path d="M45.0,130.0 A105,105 0 0,1 65.1,68.3" fill="none" stroke="#e74c3c" stroke-width="20" opacity="0.8"/>
@@ -100,20 +100,9 @@
 Saisonaler Rückgang – im Winterhalbjahr üblich
 </div>
 </div>
-<div class="card" style="flex: 2; margin-bottom: 0;">
-<div class="alert alert-warning">
-<div class="alert-icon">⚠️</div>
-<div class="alert-content">
-<div class="alert-title">Speicherstand unter 25%</div>
-<div class="alert-message">Der Füllstand liegt unter dem saisonalen Durchschnitt. Die Wiederbefüllung beginnt voraussichtlich im Frühjahr.</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Kennzahlen (volle Breite, 3 Metriken nebeneinander) -->
-<div class="card" style="margin-bottom: 1.5rem;">
+<div class="card" style="flex: 1; margin-bottom: 0;">
 <h2>📊 Kennzahlen</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.5rem;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem;">
 <div class="metric danger">
 <div class="value">-0.59%</div>
 <div class="label">Täglicher Trend</div>
@@ -138,6 +127,17 @@ Unter 10%: Gasrationierung möglich – Industrie zuerst betroffen
 </div>
 <div style="margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.75rem; color: #aaa; line-height: 1.5;">
 📋 <strong>Historischer Vergleich:</strong> Ø February: <strong style="color:#4fc3f7;">47%</strong> (2012–2022). Aktuell: 24.8% (-23% vs. Mittel). Abweichung vom Durchschnitt – Importe und Wetter entscheidend.
+</div>
+</div>
+</div>
+<!-- Statusmeldungen -->
+<div style="margin-bottom: 1.5rem;">
+<div class="alert alert-warning">
+<div class="alert-icon">⚠️</div>
+<div class="alert-content">
+<div class="alert-title">Speicherstand unter 25%</div>
+<div class="alert-message">Der Füllstand liegt unter dem saisonalen Durchschnitt. Die Wiederbefüllung beginnt voraussichtlich im Frühjahr.</div>
+</div>
 </div>
 </div>
 <!-- Vorhersage-Diagramm (volle Breite) -->
