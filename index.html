@@ -110,10 +110,10 @@ Saisonaler Rückgang – im Winterhalbjahr üblich
 </div>
 </div>
 </div>
-<!-- Kennzahlen -->
-<div class="grid">
-<div class="card">
+<!-- Kennzahlen (volle Breite, 3 Metriken nebeneinander) -->
+<div class="card" style="margin-bottom: 1.5rem;">
 <h2>📊 Kennzahlen</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.5rem;">
 <div class="metric danger">
 <div class="value">-0.59%</div>
 <div class="label">Täglicher Trend</div>
@@ -135,31 +135,12 @@ Saisonaler Rückgang – im Winterhalbjahr üblich
 Unter 10%: Gasrationierung möglich – Industrie zuerst betroffen
 </div>
 </div>
+</div>
 <div style="margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.75rem; color: #aaa; line-height: 1.5;">
 📋 <strong>Historischer Vergleich:</strong> Ø February: <strong style="color:#4fc3f7;">47%</strong> (2012–2022). Aktuell: 24.8% (-23% vs. Mittel). Abweichung vom Durchschnitt – Importe und Wetter entscheidend.
 </div>
 </div>
-<!-- Wetter-Szenarien -->
-<div class="card">
-<h2>❄️ Wetter-Szenarien (30 Tage)</h2>
-<div class="scenario-row">
-<span class="scenario-label">Kältewelle ❄️</span>
-<span class="scenario-value scenario-cold">8.8%</span>
-</div>
-<div class="scenario-row">
-<span class="scenario-label">Normal 🌤️</span>
-<span class="scenario-value scenario-normal">13.3%</span>
-</div>
-<div class="scenario-row">
-<span class="scenario-label">Milde Witterung 🌡️</span>
-<span class="scenario-value scenario-mild">16.1%</span>
-</div>
-<div style="margin-top: 0.75rem; font-size: 0.8rem; color: #666;">
-Kältewelle: +50% Verbrauch | Mild: -30% Verbrauch
-</div>
-</div>
-</div>
-<!-- Vorhersage-Diagramm -->
+<!-- Vorhersage-Diagramm (volle Breite) -->
 <div class="chart-container">
 <h2 style="margin-bottom: 1rem;">📈 Gasspeicher Füllstand Vorhersage</h2>
 <picture>
@@ -171,6 +152,27 @@ Vorhersage: 60 Tage | Tiefpunkt: 7.2% am 13.04.2026
 </div>
 <div style="margin-top: 0.5rem; padding: 0.6rem 1rem; background: rgba(255,255,255,0.05); border-left: 3px solid #555; border-radius: 4px; font-size: 0.75rem; color: #999;">
 Hinweis: Diese Prognose ist eine Modellrechnung auf Basis der letzten 30 Tage. Die tatsächliche Entwicklung hängt von Wetter, Importen und Verbrauch ab. Historischer Tiefpunkt DE: ~17% (März 2022).
+</div>
+</div>
+<!-- Wetter-Szenarien (volle Breite, unter Chart) -->
+<div class="card" style="margin-bottom: 1.5rem;">
+<h2>❄️ Wetter-Szenarien: Füllstand in 30 Tagen</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.5rem; text-align: center;">
+<div style="padding: 1rem; background: rgba(52,152,219,0.1); border-radius: 8px;">
+<div style="font-size: 1.5rem; font-weight: bold; color: #3498db;">8.8%</div>
+<div style="font-size: 0.8rem; color: #aaa; margin-top: 0.25rem;">Kältewelle ❄️</div>
+<div style="font-size: 0.7rem; color: #666; margin-top: 0.25rem;">+50% Verbrauch</div>
+</div>
+<div style="padding: 1rem; background: rgba(243,156,18,0.1); border-radius: 8px;">
+<div style="font-size: 1.5rem; font-weight: bold; color: #f39c12;">13.3%</div>
+<div style="font-size: 0.8rem; color: #aaa; margin-top: 0.25rem;">Normal 🌤️</div>
+<div style="font-size: 0.7rem; color: #666; margin-top: 0.25rem;">Normaler Verbrauch</div>
+</div>
+<div style="padding: 1rem; background: rgba(231,76,60,0.1); border-radius: 8px;">
+<div style="font-size: 1.5rem; font-weight: bold; color: #e74c3c;">16.1%</div>
+<div style="font-size: 0.8rem; color: #aaa; margin-top: 0.25rem;">Milde Witterung 🌡️</div>
+<div style="font-size: 0.7rem; color: #666; margin-top: 0.25rem;">-30% Verbrauch</div>
+</div>
 </div>
 </div>
 <!-- Einzelspeicher Matrix -->
