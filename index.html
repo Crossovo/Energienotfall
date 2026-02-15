@@ -52,6 +52,9 @@
 <h1>Gasspeicher Füllstand Deutschland</h1>
 <div style="font-size: 0.95rem; color: #aaa; margin: 0.3rem 0 0.8rem 0; letter-spacing: 0.02em;">Kein Gas. Kein Strom. Keine Produktion. <span style="color: #f39c12; font-weight: 600;">Kein Plan?</span></div>
 <a href="#plan-b" class="cta-button">Was tun bei Gasmangel? – Jetzt prüfen ↓</a>
+<div style="margin-top: 0.75rem; font-size: 0.75rem; color: #888; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+Privates Projekt zur Visualisierung öffentlicher Energiedaten – kein offizielles Behördenportal oder Krisenwarnsystem.
+</div>
 </div>
 <!-- ============ GASSPEICHER ============ -->
 <div class="section">
@@ -694,7 +697,7 @@ Kapazität: 0.6 TWh | Gespeichert: 0.3 TWh
 <!-- Europa-Link -->
 <div style="text-align: center; margin: 1rem 0;">
 <a href="europa.html" style="display: inline-block; padding: 0.75rem 2rem; background: linear-gradient(135deg, #2c3e6d, #1a5276); border: 1px solid rgba(79,195,247,0.3); border-radius: 10px; color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600;">
-🇪🇺 Gasspeicher Europa Vergleich — Alle 21 Länder →
+🇪🇺 Gasspeicher Europa Vergleich — Alle 19 Länder →
 </a>
 </div>
 <!-- ============ ENERGIETRÄGER ============ -->
@@ -1010,13 +1013,19 @@ ohne Panikmache, ohne politische Agenda.
 </div>
 <!-- Einordnung -->
 <div style="padding: 1.25rem 1.5rem; border-left: 3px solid #f39c12; background: rgba(255,255,255,0.03); border-radius: 0 8px 8px 0; margin-bottom: 1rem;">
-<h2 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Wie sind die Zahlen einzuordnen?</h2>
-<p style="font-size: 0.85rem; color: #ccc; line-height: 1.7; margin: 0;">
+<h2 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Was bedeutet 23.9% Füllstand praktisch?</h2>
+<p style="font-size: 0.85rem; color: #ccc; line-height: 1.7; margin: 0 0 0.75rem 0;">
 Ein niedriger Füllstand bedeutet nicht automatisch einen Versorgungsengpass –
 er erhöht das Risiko bei länger anhaltenden Kälteperioden.
 Deutschland verfügt über die größten Speicher Europas und bezieht Gas auch über laufende Importe.
 Die Speicher sind ein Puffer, nicht die einzige Quelle.
 </p>
+<div style="font-size: 0.8rem; color: #aaa; line-height: 1.7;">
+<strong style="color: #ccc;">Aktuell:</strong> 60.1 TWh gespeichert – das entspricht etwa 55 Tagen Versorgung aller 20 Mio. Gas-Haushalte.
+Die Prognose zeigt einen Modell-Tiefpunkt von 7.2%, basierend auf dem Trend der letzten 30 Tage.
+Wetter-Szenarien zeigen die Sensitivität: Bei Kälte sinkt der Stand schneller, bei mildem Wetter langsamer.
+Die tatsächliche Entwicklung hängt von Temperatur, Importen und Verbrauch ab.
+</div>
 </div>
 <!-- Transparenz -->
 <div style="padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 1rem; font-size: 0.8rem; color: #aaa; line-height: 1.8;">
@@ -1064,6 +1073,18 @@ Die Speicher sind ein Puffer, nicht die einzige Quelle.
 <details style="margin-bottom: 4px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
 <summary style="padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: #ccc; font-weight: 600;">Darf ich die Grafiken verwenden?</summary>
 <div style="padding: 0 1rem 0.7rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">Ja, gerne – mit Quellenangabe (energienotfall.de). Für journalistische oder kommerzielle Nutzung freuen wir uns über eine kurze Nachricht an <a href="mailto:hello@energienotfall.de" style="color: #4fc3f7;">hello@energienotfall.de</a>.</div>
+</details>
+<details style="margin-bottom: 4px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+<summary style="padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: #ccc; font-weight: 600;">Woher stammen die Daten?</summary>
+<div style="padding: 0 1rem 0.7rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">Speicherdaten: AGSI-Datenbank der Gas Infrastructure Europe (GIE) · Importdaten: Bundesnetzagentur · Gaspreise: ICE (TTF-Futures) · Strompreise: EPEX Spot via Energy-Charts · Historische Referenz: AGSI-Zeitreihen 2012–2025.</div>
+</details>
+<details style="margin-bottom: 4px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+<summary style="padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: #ccc; font-weight: 600;">Wie entsteht die Prognose?</summary>
+<div style="padding: 0 1rem 0.7rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">Die Prognose basiert auf einem Hybridmodell: Der Trend der letzten 30 Tage wird mit historischen Saisonmustern (2012–2025) gewichtet kombiniert. Wetter-Szenarien simulieren die Auswirkung von Kälte- und Mildphasen auf den Verbrauch. Die Modellrechnung wird täglich aktualisiert.</div>
+</details>
+<details style="margin-bottom: 4px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+<summary style="padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: #ccc; font-weight: 600;">Wie wird die Wiederbefüllung berechnet?</summary>
+<div style="padding: 0 1rem 0.7rem; font-size: 0.8rem; color: #aaa; line-height: 1.6;">Die Refill-Projektion nutzt historische Netto-Einspeiseraten (Einspeisung minus Entnahme) pro Monat aus den Jahren 2012–2025. Das Durchschnittsszenario zeigt den Mittelwert, das Best-Case-Szenario basiert auf den Raten von 2022, als politisch priorisiert eingespeichert wurde.</div>
 </details>
 </div>
 </div>
