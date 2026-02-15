@@ -52,8 +52,9 @@
 <h1>Gasspeicher Füllstand Deutschland</h1>
 <div style="font-size: 0.95rem; color: #aaa; margin: 0.3rem 0 0.8rem 0; letter-spacing: 0.02em;">Kein Gas. Kein Strom. Keine Produktion. <span style="color: #f39c12; font-weight: 600;">Kein Plan?</span></div>
 <a href="#plan-b" class="cta-button">Was tun bei Gasmangel? – Jetzt prüfen ↓</a>
-<div style="margin-top: 0.75rem; font-size: 0.75rem; color: #888; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-Privates Projekt zur Visualisierung öffentlicher Energiedaten – kein offizielles Behördenportal oder Krisenwarnsystem.
+<div style="margin-top: 0.75rem; font-size: 0.75rem; color: #888; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+Privates Informationsprojekt – kein amtliches Warnsystem.<br>
+„Notfall" steht für Informationsbedarf, nicht für eine akute Krise.
 </div>
 </div>
 <!-- ============ GASSPEICHER ============ -->
@@ -64,7 +65,7 @@ Privates Projekt zur Visualisierung öffentlicher Energiedaten – kein offiziel
 </div>
 <div style="margin: 0.25rem 0 0.75rem 0; font-size: 0.75rem; color: #aaa; display: flex; gap: 1rem; flex-wrap: wrap;">
 <span>Stand: 14.02.2026</span>
-<span>Reichweite 41d</span>
+<span>Reichweite 41 Tage</span>
 <span>Trend -0.59%/d</span>
 <span style="color: #4fc3f7;">Ø Feb: 47%</span>
 <span>✓ Importe aktiv</span>
@@ -111,28 +112,28 @@ Saisonaler Rückgang – im Winterhalbjahr üblich
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.4rem;">
 <div class="metric danger">
 <div class="value">-0.59%</div>
-<div class="label">Täglicher Trend</div>
+<div class="label">Trend pro Tag</div>
 </div>
 <div class="metric">
 <div class="value">41</div>
-<div class="label">Tage Reichweite (aktuell)</div>
+<div class="label">Reichweite in Tagen</div>
 <div class="metric-detail" style="font-size: 0.75rem; color: #aaa; margin-top: 0.25rem;">
 ❄️ Kälte: 27d | 🌡️ Mild: 58d
 </div>
 </div>
 <div class="metric danger">
 <div class="value">7.2%</div>
-<div class="label">Prognose-Tiefpunkt</div>
+<div class="label">Modell-Tiefpunkt</div>
 <div class="metric-detail" style="font-size: 0.75rem; color: #aaa; margin-top: 0.25rem;">
 15.04.2026
 </div>
 <div class="metric-detail" style="font-size: 0.7rem; color: #e74c3c; margin-top: 0.25rem;">
-Unter 10%: Gasrationierung möglich – Industrie zuerst betroffen
+Unter 10%: Verbrauchseinschränkungen laut Notfallplan Gas möglich
 </div>
 </div>
 </div>
 <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.7rem; color: #aaa; line-height: 1.4;">
-📋 Ø February: <strong style="color:#4fc3f7;">47%</strong> (2012–2022) · Aktuell: 23.9% (-23%)
+Langjähriger Ø für February: <strong style="color:#4fc3f7;">47%</strong> (2012–2022) · Aktuell -23% unter Durchschnitt
 </div>
 </div>
 </div>
@@ -141,21 +142,22 @@ Unter 10%: Gasrationierung möglich – Industrie zuerst betroffen
 </div>
 <!-- Vorhersage-Diagramm (volle Breite) -->
 <div class="chart-container">
-<h2 style="margin-bottom: 1rem;">📈 Gasspeicher Füllstand Diagramm</h2>
+<h2 style="margin-bottom: 1rem;">📈 Speicherentwicklung und Prognose (30-Tage-Modell)</h2>
 <picture>
 <source srcset="Gasspeicher_Vorhersage_2026-02-15.webp" type="image/webp">
 <img src="Gasspeicher_Vorhersage_2026-02-15.png" alt="Gasspeicher Füllstand Diagramm" loading="lazy" width="1920" height="960" />
 </picture>
 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #aaa;">
-Vorhersage: 60 Tage | Tiefpunkt: 7.2% am 15.04.2026
+Prognosezeitraum: 60 Tage · Modell-Tiefpunkt: 7.2% am 15.04.2026
 </div>
-<div style="margin-top: 0.5rem; padding: 0.6rem 1rem; background: rgba(255,255,255,0.05); border-left: 3px solid #555; border-radius: 4px; font-size: 0.75rem; color: #aaa;">
-Hinweis: Diese Prognose ist eine Modellrechnung auf Basis der letzten 30 Tage. Die tatsächliche Entwicklung hängt von Wetter, Importen und Verbrauch ab. Historischer Tiefpunkt DE: ~17% (März 2022).
+<div style="margin-top: 0.5rem; padding: 0.6rem 1rem; background: rgba(255,255,255,0.05); border-left: 3px solid #555; border-radius: 4px; font-size: 0.75rem; color: #aaa; line-height: 1.6;">
+<strong style="color: #ccc;">Methodik:</strong> Trend der letzten 30 Tage, kombiniert mit Saisonmustern (2012–2025).
+Dient der Orientierung, nicht der Vorhersage von Versorgungssicherheit.
 </div>
 </div>
 <!-- Wetter-Szenarien (volle Breite, unter Chart) -->
 <div class="card" style="margin-bottom: 0.75rem;">
-<h2>❄️ Wetter-Szenarien: Füllstand in 30 Tagen</h2>
+<h2>❄️ Wie wirkt sich das Wetter aus? Füllstand in 30 Tagen</h2>
 <div class="weather-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
 <div style="padding: 0.75rem; background: rgba(52,152,219,0.1); border-radius: 8px;">
 <div style="font-size: 1.3rem; font-weight: bold; color: #3498db;">8.5%</div>
@@ -175,7 +177,7 @@ Hinweis: Diese Prognose ist eine Modellrechnung auf Basis der letzten 30 Tage. D
 </div>
 </div>
 <div class="card" style="margin-bottom: 1.5rem;">
-<h2>🔋 Wiederbefüllung 2026 – Erreicht Deutschland die 90%-Vorgabe?</h2>
+<h2>🔋 Wiederbefüllung 2026 – Ist die EU-Vorgabe von 90% erreichbar?</h2>
 <!-- Fortschrittsbalken -->
 <div style="margin-bottom: 1.25rem;">
 <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; margin-bottom: 0.4rem;">
@@ -343,15 +345,16 @@ Hinweis: Diese Prognose ist eine Modellrechnung auf Basis der letzten 30 Tage. D
 </table>
 </div>
 <!-- Hinweis -->
-<div style="margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.75rem; color: #aaa; line-height: 1.5;">
-⚙️ <strong>Einspeise-Kapazität:</strong> 4,379 GWh/d technisch verfügbar — tatsächlich genutzt: Ø 708 GWh/d (Mai–Aug). Die 90%-Vorgabe basiert auf EU-Verordnung 2022/1032. Prognose auf Basis historischer Einspeiseraten 2012–2025.
+<div style="margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.75rem; color: #aaa; line-height: 1.6;">
+<strong style="color: #ccc;">Hintergrund:</strong> Einspeise-Kapazität 4,379 GWh/d (technisch). Tatsächlich genutzt: Ø 708 GWh/d im Sommer.<br>
+Berechnung auf Basis historischer Einspeiseraten 2012–2025. Vorgabe: EU-Verordnung 2022/1032.
 </div>
 </div>
 <!-- Einzelspeicher Matrix -->
 <div class="card" style="grid-column: 1 / -1; margin-top: 1.5rem;">
 <h2 id="gasspeicher-tabelle">🏢 Gasspeicher Füllstand Tabelle – Betreiber & Speicher</h2>
 <div style="font-size: 0.75rem; color: #aaa; margin-bottom: 0.5rem;">
-25 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
+24 Betreiber | Sortiert nach Kapazität | Hover für Speicher-Details
 </div>
 <div class="facility-matrix">
 <div class="facility-tile" style="background: rgba(243, 156, 18, 0.85);">
@@ -457,19 +460,6 @@ Kapazität: 6.5 TWh | Gespeichert: 1.2 TWh
 <div class="tile-capacity">6.5 TWh</div>
 <div class="tile-bar"><div class="tile-bar-fill" style="width:18%"></div></div>
 <div class="tile-trend" style="color:#ccc">-1.06%/d</div>
-</div>
-<div class="facility-tile" style="background: rgba(243, 156, 18, 0.85);">
-<div class="tile-tooltip">
-<strong>OMV Gas Storage Germany</strong><br>
-Füllstand: 27.4% | Trend: -0.31%/Tag<br>
-Kapazität: 5.2 TWh | Gespeichert: 1.4 TWh
-</div>
-<div class="trend-arrow" style="color:#e74c3c">▼</div>
-<div class="tile-name">OMV Gas Storage …</div>
-<div class="tile-pct">27%</div>
-<div class="tile-capacity">5.2 TWh</div>
-<div class="tile-bar"><div class="tile-bar-fill" style="width:27%"></div></div>
-<div class="tile-trend" style="color:#ccc">-0.31%/d</div>
 </div>
 <div class="facility-tile" style="background: rgba(231, 76, 60, 0.85);">
 <div class="tile-tooltip">
@@ -697,7 +687,7 @@ Kapazität: 0.6 TWh | Gespeichert: 0.3 TWh
 <!-- Europa-Link -->
 <div style="text-align: center; margin: 1rem 0;">
 <a href="europa.html" style="display: inline-block; padding: 0.75rem 2rem; background: linear-gradient(135deg, #2c3e6d, #1a5276); border: 1px solid rgba(79,195,247,0.3); border-radius: 10px; color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600;">
-🇪🇺 Gasspeicher Europa Vergleich — Alle 19 Länder →
+🇪🇺 Gasspeicher Europa Vergleich — Alle 21 Länder →
 </a>
 </div>
 <!-- ============ ENERGIETRÄGER ============ -->
@@ -921,7 +911,7 @@ Endverbraucher-Näherung inkl. Steuern & Netzentgelte. Gas/Strom: Großhandel + 
 <div class="grid">
 <!-- Import Flow -->
 <div class="card">
-<h2>📍 Gasimporte (GWh/Tag)</h2>
+<h2>📍 Woher kommt das Gas? Importe pro Tag</h2>
 <div class="import-flow">
 <div class="import-item">
 <span class="country">🇳🇴 Norwegen</span>
@@ -947,7 +937,7 @@ Endverbraucher-Näherung inkl. Steuern & Netzentgelte. Gas/Strom: Großhandel + 
 </div>
 <!-- Strom vs. Gas -->
 <div class="card">
-<h2>⚡ Strom vs. Gas (Großhandel)</h2>
+<h2>⚡ Strom- und Gaspreis im Großhandel</h2>
 <div class="spark-container">
 <div class="spark-item">
 <div class="value">32.5</div>
@@ -971,7 +961,7 @@ Quellen: Gas (TTF) | Strom (EPEX Spot (energy-charts.info))
 </div>
 <!-- Umrechnungen -->
 <div class="card">
-<h2>🔄 Umrechnungen</h2>
+<h2>🔄 Was bedeuten die Zahlen im Alltag?</h2>
 <div class="conversion-list">
 <div class="conversion-item">
 <div class="conv-value">5.9 Mrd. m³</div>
@@ -1013,18 +1003,15 @@ ohne Panikmache, ohne politische Agenda.
 </div>
 <!-- Einordnung -->
 <div style="padding: 1.25rem 1.5rem; border-left: 3px solid #f39c12; background: rgba(255,255,255,0.03); border-radius: 0 8px 8px 0; margin-bottom: 1rem;">
-<h2 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Was bedeutet 23.9% Füllstand praktisch?</h2>
-<p style="font-size: 0.85rem; color: #ccc; line-height: 1.7; margin: 0 0 0.75rem 0;">
-Ein niedriger Füllstand bedeutet nicht automatisch einen Versorgungsengpass –
-er erhöht das Risiko bei länger anhaltenden Kälteperioden.
-Deutschland verfügt über die größten Speicher Europas und bezieht Gas auch über laufende Importe.
-Die Speicher sind ein Puffer, nicht die einzige Quelle.
+<h2 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Was bedeutet 23.9% Füllstand?</h2>
+<p style="font-size: 0.85rem; color: #ccc; line-height: 1.7; margin: 0 0 0.6rem 0;">
+Niedriger Füllstand heißt nicht automatisch Versorgungsengpass. Die Speicher sind ein Puffer – Gas fließt auch über laufende Importe.
 </p>
-<div style="font-size: 0.8rem; color: #aaa; line-height: 1.7;">
-<strong style="color: #ccc;">Aktuell:</strong> 60.1 TWh gespeichert – das entspricht etwa 55 Tagen Versorgung aller 20 Mio. Gas-Haushalte.
-Die Prognose zeigt einen Modell-Tiefpunkt von 7.2%, basierend auf dem Trend der letzten 30 Tage.
-Wetter-Szenarien zeigen die Sensitivität: Bei Kälte sinkt der Stand schneller, bei mildem Wetter langsamer.
-Die tatsächliche Entwicklung hängt von Temperatur, Importen und Verbrauch ab.
+<div style="font-size: 0.8rem; color: #aaa; line-height: 1.8;">
+<div style="margin-bottom: 0.2rem;">· <strong style="color: #ccc;">60.1 TWh</strong> gespeichert – reicht für ca. 55 Tage (alle 20 Mio. Gas-Haushalte)</div>
+<div style="margin-bottom: 0.2rem;">· Modell-Tiefpunkt: <strong style="color: #ccc;">7.2%</strong> – basierend auf dem Trend der letzten 30 Tage</div>
+<div style="margin-bottom: 0.2rem;">· Wetter beeinflusst den Verbrauch stark: Kälte beschleunigt, milde Tage bremsen den Rückgang</div>
+<div>· Die tatsächliche Entwicklung hängt von Temperatur, Importen und Verbrauch ab</div>
 </div>
 </div>
 <!-- Transparenz -->
