@@ -49,6 +49,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.energienotfall.de/notfall-radar.html</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://www.energienotfall.de/blackout-vorbereitung.html</loc>
     <lastmod>2026-02-19</lastmod>
     <changefreq>daily</changefreq>
